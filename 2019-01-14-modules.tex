@@ -1,0 +1,333 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{lipsum}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{bold-extra}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[makeroom]{cancel}
+\usepackage{hanging}
+\usepackage{stmaryrd}
+\usepackage{enumerate}
+\usepackage{color, soul}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{mathdots}
+\usepackage{fullpage}
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+%theorems, etc.
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{lem}{Lemma}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{defn}{Definition}
+\newtheorem*{conj}{Conjecture}
+\newtheorem*{exam}{Example}
+\newtheorem*{alg}{Algorithm}
+\newtheorem*{hw}{Exercise}
+\newtheorem*{note}{Note}
+\newtheorem*{rem}{Remark}
+
+\newcommand{\dfn}{\textbf{Definition. }}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+%========= Spacing and format
+\newcommand{\cen}{\centerline}
+\newcommand{\hang}{\hangindent=0.8cm}
+\newcommand{\nhang}{\hangindent=0cm}
+\newcommand{\nf}{\normalfont}
+\newcommand{\fl}{\noindent}
+\newcommand{\vs}{\vspace{0.7em}}
+\newcommand{\vv}{\\\vs}
+\newcommand{\nl}{\vspace{7em}}
+\renewcommand{\hl}{}
+
+
+%========= Common Math commands
+\newcommand{\ex}{\exists}
+\newcommand{\nin}{\not\in}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\oa}{\overrightarrow}
+\newcommand{\lbb}{\llbracket}
+\newcommand{\rbb}{\rrbracket}
+\newcommand{\p}{\prime}
+\newcommand{\wh}{\widehat}
+\newcommand{\os}{\overset}
+\newcommand{\us}{\underset}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\ol}{\overline}
+\newcommand{\td}{\widetilde}
+\newcommand{\seq}{\subseteq}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\im}{\text{im}}
+\newcommand{\inv}{^{-1}}
+
+
+
+
+%========= Math letters
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\fs}{\mathscr{S}} %fancy S
+\newcommand{\ff}{\mathscr{F}} %fancy F
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\bs}{\mathbb{S}}
+
+
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\fke}{\mathfrak{e}}
+\newcommand{\al}{\alpha}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\be}{\beta}
+\newcommand{\Lm}{\Lambda}
+\newcommand{\lm}{\lambda}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\sig}{\sigma}
+\newcommand{\Tht}{\Theta}
+\newcommand{\tht}{\theta}
+\newcommand{\vphi}{\varphi}
+\newcommand{\vep}{\varepsilon}
+
+
+
+%========= Linear Algebra
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+\newcommand{\bsm}{\left( \begin{smallmatrix}}
+\newcommand{\esm}{\end{smallmatrix}\right)}
+\newcommand{\hh}{\hspace{2em}}
+\newcommand{\vect}{\overset{\rightharpoonup}}
+
+
+%========= Algebra notation
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Inn}{\text{Inn}}
+\newcommand{\Tor}{\text{Tor}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\End}{\text{End}}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\Fix}{\text{Fix}}
+
+
+%========= Analysis notation
+\newcommand{\M}{\mathcal{M}} 
+
+
+
+%========= Topology notation
+\newcommand{\YY}{\mathcal{Y}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\CS}{\mathcal{S}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\FB}{\mathfrak{B}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\wt}{\widetilde}
+\newcommand{\es}{\varnothing}
+
+
+
+%========= Diff. Geo Shorthand
+\newcommand{\bv}{\textbf{v}}
+\newcommand{\bw}{\textbf{w}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\BS}{\mathbb{S}}
+\newcommand{\BSS}{\mathbb{S}^1}
+\newcommand{\BSN}{\mathbb{S}^n}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\Cin}{C^\infty}
+\newcommand{\px}{\widehat{x}}
+\newcommand{\lh}  %left hook
+{\mathbin{\mathpalette\blh\relax}}
+\newcommand{\blh}[2]{\raisebox{\depth}{\scalebox{1}[-1]{$#1\lnot$}}} 
+
+
+\begin{document}
+\section*{Introduction to Module Theory}
+
+\begin{defn}
+Let $R$ be a ring (not necessarily commutative nor with 1). A \textit{\textbf{left $R$-module}} or a \textit{left module over $R$} is a set $M$ together with
+\begin{enumerate}
+\item a binary operation $+$ on $M$ under which $M$ is an abelian group, and
+\item an action of $R$ on $M$ (that is, a map $R\times M\ra M$) denoted by $rm$, for all $r\in R$ and for all $m\in M$ which satisfies
+\begin{enumerate}
+\item $(r + s)m = rm + sm$, \ \ \ for all $r,s\in R,\ m\in M$
+\item $(rs)m = r(sm)$, \ \ \ for all $r,s\in R,\ m\in M$, and 
+\item $r(m + n) = rm + rn$, \ \ \ for all $r,s\in R,\ m\in M$.
+\end{enumerate}
+If the ring $R$ has 1 we impose the additional axiom:
+\begin{enumerate}
+\item[(d)]  $1m = m$, \ \ \ for all $m\in M$.
+\end{enumerate}
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{defn}
+Let $R$ be a ring and let $M$ be an $R$-module. An $R$-\textit{\textbf{submodule}} of $M$ is a subgroup $N$ of $M$ which is closed under the action of ring elements. 
+\end{defn}
+
+\nl
+
+\begin{prop}
+\hl{\textit{(The Submodule Criterion)}} Let $R$ be a ring and let $M$ be an $R$-module. A subset $N$ of $M$ is a submodule of $M$ if and only if
+\begin{enumerate}
+\item $N\neq \es$, and
+\item $x + ry\in N$ for all $r\in R$ and for all $x,y\in M$.
+\end{enumerate}
+\end{prop}
+
+\nl
+
+\begin{defn}
+Let $R$ be a ring and let $M$ and $N$ be $R$-modules.
+\begin{enumerate}
+\item A map $\vphi: M\ra N$ is an $R$\textbf{\textit{-module homomorphism}} if it respects the $R$-module structures of $M$ and $N$, i.e.,
+\begin{enumerate}
+\item $\vphi(x + y) = \vphi(x) + \vphi(y)$, \ \ \ for all $x,y\in M$ and
+\item $\vphi(rx) = r\vphi(x)$, \ \ \ for all $r\in R$, $x\in M$.
+\end{enumerate}
+\item An $R$-module homomorphism is an \textbf{\textit{isomorphism}} if it is both injective and surjective. The modules $M$ and $N$ are said to be \textbf{\textit{isomorphic}}, denoted $M\cong N$ if there is some $R$-module isomorphism $\vphi: M\ra N$.
+\item If $\vphi:M\ra N$ is an $R$-module homomorphism, let $\ker(\vphi) = \{m\in M\ |\ \vphi(m) = 0\}$ and let $\vphi(M) = \{n\in N\ |\ n = \vphi(m)\text{ for some } m\in M\}$.
+\item Let $M$ and $N$ be $R$-modules and define $\Hom_R(M,N)$ to be the set of $R$-module homomorphisms from $M$ to $N$.
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{prop}
+Let $M$, $N$, and $L$ be $R$-modules
+\begin{enumerate}
+\item A map $\vphi: M\ra N$ is an $R$-module homomorphism if and only if $\vphi(rx + y) = r\vphi(x) + \vphi(y)$ for all $c,y\in M$ and $r\in R$.
+\item Let $\vphi,\ \psi$ be elements of $\Hom_R(M,N)$. Define $\vphi + \psi $ by
+\[(\vphi + \psi)(m) = \vphi(m) + \psi(m)\qquad\text{for all } m\in M.\]
+Then $\vphi + \psi\in \Hom_R(M,N)$ and with this operation $\Hom_R(M,N)$ is an abelian group. If $R$ is a commutative ring the for $r\in R$ define $r\vphi$ by 
+\[(r\vphi)(m) = r(\vphi(m))\qquad\text{for all } m\in M.\]
+Then $r\vphi\in\Hom_R(M.N)$ and with this action of the commutative ring $R$ the abelian group $\Hom_R(M,N)$ is an $R$-module.
+\item If $\vphi\in\Hom_R(L,M)$ and $\psi\in\Hom_R(M,N)$ then $\psi\circ\vphi\in\Hom_R(L,N)$.
+\item With addition as above and multiplication defined as function composition, $\Hom_R(M,M)$ is an $R$-algebra.
+\end{enumerate}
+\end{prop}
+
+\nl
+
+\begin{defn}
+The ring $\Hom_R(M,M)$ is called the \textbf{\textit{endomorphism ring of $M$}} and will often be denoted by $\End_R(M)$. Elements of $\End(M)$ are called \textbf{\textit{endomorphisms}}.
+\end{defn}
+
+\nl
+
+\begin{prop}
+Let $R$ be a ring, let $M$ be an $R$-module, and let $N$ be a submodule of $M$. The quotient group $M/N$ can be made into an $R$-module by defining an action of elements of $R$ by
+\[r(x + N) = (rx) + N),\qquad\text{ for all }r\in R,\ x + N \in M/N.\]
+The natural projection map $\pi:M\ra M/N$ is an $R$-module homomorphism with kernel $N$.
+\end{prop}
+
+\nl
+
+\begin{defn}
+Let $A$, $B$ be submodules of the $R$-module $M$. The \textit{sum} of $A$ and $B$ is the set 
+\[A + B = \{a + b\ |\ a\in A,\ b\in B\}.\]
+\end{defn}
+
+\nl
+
+\begin{defn}
+Let $M$ be an $R$-module and let $N_1,\ldots,N_n$ be submodules of $M$.
+\begin{enumerate}
+\item The \textbf{\textit{sum}} of $N_1,\ldots,N_n$ is the set of all finite sums of elements form the sets $N_i:\ \{a_1+\cdots+a_n\ |\ a_i\in N_i\}$. Denote this sum by $N_1+\cdots +N_n$.
+\item For any subset $A$ of $M$ let
+\[RA = \{r_1a_1+\cdots+r_ma_m\ |\ a_i\in A,\ r_i \in R,\ m\in\Z^+\}.\]
+If $A$ is finite we may write $Ra_1 + Ra_2+\cdots +Ra_m$. Call $RA$ th \textit{\textbf{submodule of $M$ generated by $A$}}. If $N$ is a submodule of $M$ and $N = RA$ for some subset $A$ of $M$, we call $A$ a set of generators or a generating set for $N$,. and we say that $N$ is generated by $A$.
+\item A submodule $N$ of $M$ is \textbf{\textit{finitely generated}} if there is some finites subset $A$ of $M$ such that $N = RA$.
+\item A submodule $N$ of $M$ is \textit{\textbf{cyclic}} if there exists an element $a\in M$ such that $N = Ra$, that is, if $N$ is generated by one element.
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{prop}
+Let $N_1,N_2,\ldots,N_k$ be submodules of the $R$-module $M$. Then the following are equivalent
+\begin{enumerate}
+\item The map $\pi:N_1\times N_2\times \cdots \times N_k\ra N_1 + N_2 + \cdots + N_k$ defined by 
+\[\pi(a_1,a_2,\ldots,a_k) = a_1 + a_2+\cdots + a_k\]
+is an isomorphism (of $R$-modules)
+\item $N_j\cap N_1+\cdots N_{j-1} + N_{j + 1} +\cdots +N_k = 0$ for all $j\in \{1,2,\ldots, k\}$.
+\item Every $x\in N_1+\cdots + N_k$ can be written \textit{uniquely} in the form $a_1 + a_2 + \cdots + a_k$ for $a_i \in N_i$.
+\end{enumerate}
+\end{prop}
+
+\nl
+
+\begin{defn}
+If an $R$-module $M = N_1 + N_2 + \cdots + N_k$ is the sum of submodules $N_1,N_2,\ldots,N_k$ of $M$ satisfying the equivalent conditions in the above proposition, then $M$ is said to be the \textit{\textbf{(internal) direct sum}} of $N_1, N_2, \ldots, N_k$ written
+\[M = N_1 \oplus N_2 \oplus \cdots \oplus N_k.\]
+\end{defn}
+
+\nl
+
+\begin{defn}
+And $R$-module $F$ is said to be \textbf{\textit{free}} on the subset $A$ of $F$ if for every nonzero element $x$ of $F$, there exist unique nonzero elements $r_1,r_2,\ldots, r_n$ of $R$ and unique $a_1,a_2,\ldots, a_n$ in $A$ such that $x = r_1a_1 + r_2 a_2 + \cdots + r_n a_n$, for some $n\in \Z^+$. In this situation we say $A$ is a \textbf{\textit{basis}} or \textbf{\textit{set of free generators}} for $F$. If $R$ is a commutative ring the cardinality of $A$ is called the \textbf{\textit{rank}} of $F$.
+\end{defn}
+
+\nl
+
+\begin{thm}
+For any set $A$ there is a free $R$-module $F(A)$ on the set $A$ and $F(A)$ satisfies the following \textbf{\textit{universal property}}: if $M$ is any $R$-module and $\vphi: A\ra M$ is any map of sets, then there is a unique $R$-module homomorphism $\Phi:F(A) \ra M$ such that $\Phi(a) = \vphi(a)$, for all $a\in A$, that is, the following diagram commutes.
+
+\begin{center}
+\begin{tikzcd}[row sep = 2em, column sep = 3em]
+A\arrow[r, "\iota"]\arrow[dr, swap, "\vphi"] & F(A)\arrow[d, "\Phi"]\\
+ & M
+\end{tikzcd}
+\end{center}
+
+\end{thm}
+
+\nl
+
+\begin{cor}\nl
+\begin{enumerate}
+\item If $F_1$ and $F_2$ are free modules on the same set $A$, there is a unique isomorphism between $F_1$ and $F_2$ which is the identity map on $A$.
+\item If $F$ is any free $R$-module with basis $A$, then $F\cong F(A)$. In particular, $F$ enjoys the same universal property with respect to $A$ as $F(A)$ does in the previous theorem.
+\end{enumerate}
+\end{cor}
+
+
+\end{document}
