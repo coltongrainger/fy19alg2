@@ -1,10 +1,9 @@
 ---
-title: "Introduction to Module Theory: Basic Definitions and Examples"
+title: "Module Theory: Basic Definitions and Examples"
 author: Colton Grainger (MATH 6140 Algebra 2)
 date: 2019-01-14
 bibliography: /home/colton/coltongrainger.bib
-macros: true
-revised:
+nonumbering: true
 ---
 
 \setcounter{section}{0}
