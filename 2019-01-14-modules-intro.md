@@ -24,7 +24,7 @@ nonumbering: true
 \wts There is no $s \in R$ such that $sr =1$.
 
 \pf Suppose for contradiction there's $s \in R$ such that $sr = 1$. Then both
-\begin{align*} sr.m &= m\\ r.m = 0 \end{align*}
+\begin{align*} sr.m &= m\\ r.m &= 0 \end{align*}
 Try adding:
 \begin{align*} s.m + sr.m &= s.m + s.(r.m) &\text{ by module axioms }\\
     &= s.(m+r.m) &\text{ by distributivity of scalar multiplication }\\
@@ -59,6 +59,8 @@ b. $N$ is nonempty, as it contains the additive identity of $R^n$. Let $x$, $y$ 
 
 \wts The intersection $\bigcap_i N_i$ is a submodule of $M$.
 
+\pf Observe $0_M \in \cap_i N_i \neq \emptyset$. Next, suppose $x, y \in \cap_i N_i$. Then $x+y$ is in each $N_i$, by closure of submodules under addition. If $r \in R$, then so too $rx \in N_i$ for all $i$, by closure of submodules under scalar multiplication. Thence $x + y \in \cap_i N_i$ and $rx \in \cap_i N_i$. \qedsymbol
+
 ### [@DF04, number 10.1.8]
 
 \newcommand{\Tor}[1]{\mathrm{Tor}\left( #1 \right)}
@@ -67,9 +69,18 @@ b. $N$ is nonempty, as it contains the additive identity of $R^n$. Let $x$, $y$ 
 
 \wts 
 
-a. If $R$ is an integral domain, then $\Tor M$ is a submodule of $M$ (called the *torsion submodule*).
+a. If $R$ is an entire ring, then $\Tor M$ is a submodule of $M$ (called the *torsion submodule*).
 
-c. If $R$ has zero divisors, then every nonzero $R$-module has nonzero torsion elements.
+b. If $R$ has zero divisors, then every nonzero $R$-module has nonzero torsion elements.
+
+\pf
+
+a. $\Tor M$ contains $0$. Now say $x,y \in \Tor M$. Then some $\alpha, \beta \in R$ kill $x$ and $y$ respectively: 
+$$ \alpha x = 0, \quad \quad \beta y = 0.$$
+Consider $x + y$. Because $R$ is commutative and by module axioms, 
+$$ \alpha \beta(x + y) = \beta(\alpha x ) + \alpha(\beta y) = 0 + 0.$$
+So the sum $x+y \in \Tor M$. Next say $r \in R$ is nonzero. Consider $rx$. We have $$\alpha r x = r (\alpha x) = 0$$ and because both $r$ and $\alpha$ are nonzero elements in an entire ring, it can't be that $r\alpha = 0$ and it must be that $rx = 0$. So $rx \in \Tor M$. 
+b. Let $R$ have at least the pair of zero divisors $\alpha$ and $\beta$ with $\alpha\beta = 0$. Say that $M$ is a non-trivial $R$-module, and take nonzero $m$ in $M$. Either $\alpha m = 0$ or not---in the former case $m \in \Tor M$, and in the later $\beta(\alpha m) = \beta\alpha m = 0m = 0$, so that $\alpha m \in \Tor M$. Both cases force a nontrivial element in $\Tor M$. \qedsymbol
 
 ### [@DF04, number 10.1.9]
 
