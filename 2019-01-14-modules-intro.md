@@ -23,7 +23,7 @@ nonumbering: true
 
 \wts There is no $s \in R$ such that $sr =1$.
 
-\pf Suppose for contradiction there's $s \in R$ such that $sr = 1$. Then both
+*Proof by contradiction.* Suppose there's $s \in R$ such that $sr = 1$. Then both
 \begin{align*} sr.m &= m\\ r.m &= 0 \end{align*}
 Try adding:
 \begin{align*} s.m + sr.m &= s.m + s.(r.m) &\text{ by module axioms }\\
@@ -88,29 +88,40 @@ b. Let $R$ have at least the pair of zero divisors $\alpha$ and $\beta$ with $\a
 
 \wts The annihilator of $N$ in $R$ is a $2$-sided ideal of $R$.
 
+\pf Denote the annihilator of $N$ in $R$ by $\fa$. First note $0 \in \fa$ as $0n = 0$ for all $n \in N$. Next take $\alpha, \beta \in \fa$. Then $(\alpha + \beta)n = \alpha n + \beta n = 0 + 0 = 0$. Then $\alpha + \beta \in \fa$; we see $\fa$ is closed under finite sums. Moreover, each $\alpha \in \fa$ has an additive inverse $-\alpha \in R$. Since $0 = - \alpha n = (- \alpha )n$, $\fa$ is closed under additive inverses. So $\fa$ is an abelian subgroup of $R$. Now say that $r \in R$ and $a \in \fa$. Then $$(ra)n = r(an) = r(0) = 0,$$ so $ra \in \fa$. Consider $ar$. We have $$(ar)n = a(rn) = a(n_0) = 0, \quad \quad \text{ where $rn = n_0 \in N$,}$$ so that $ar  \in \fa$. We conclude $\fa$ is a two-sided ideal. \qedsymbol
+
 ### [@DF04, number 10.1.15]
 
 \gvn Say $M$ is a finite abelian group. $M$ is naturally a $\ZZ$-module. 
 
 \wts This action cannot be extended to make $M$ into a $\QQ$-module.
 
+*Proof by contradiction.* Suppose $\QQ$ extends the action of $\ZZ$ on $M$. Pick any nonzero $m \in M$. I claim for each $n \in \
+\NN$, $\frac 1 n . m \neq 0$. To wit, by the unital module axiom, $$m = n . \left( \frac 1 n . m \right) \neq n.( 0 ) = 0 \quad \text{ by assumption than $m$ is nonzero.}$$ I claim for each distinct pair $a, b \in \NN$, the image of $m$ under the action of $\frac 1 a$ and $\frac 1 b$ is distinct. Else we could find $$ 0 = \frac 1 a . m - \frac 1 b . m = \left(\frac 1 a - \frac 1 b\right).m = \frac 1 {ab} .m,$$ which is prevented by the previous claim. Since $\NN$ is infinite, the image of $\frac 1 n . m$ in $M$ as $n$ ranges through $\NN$ must be infinite, which is absurd! By hypothesis, $M$ is a finite group. \qedsymbol
+
 ### [@DF04, number 10.1.18]
 
-\gvn Let $F = \RR$, let $V = \RR^2$, and let $T$ be the linear transformation from $V$ to $V$ that is rotation clockwise about the origin by $\pi / 2$ radians.
+\gvn Say we have a linear transformation $T \colon \RR^2 \to \RR^2$ with the associated matrix $$A_T = \begin{bmatrix} 0 & 1 \\ -1 & 0\end{bmatrix}, \quad \text{ with respect to the standard basis.}$$ Consider $V = \RR^2$ as an $\RR[x]$-module where scalar multiplication is obviously defined by constant polynomials and $x$ acts by the linear transformation $x.v = Av$. 
 
-\wts $V$ and $0$ are the only $F[x]$-submodules for this $T$.
+\wts If $M$ is a submodule of $V$, then $M$ is trivial or $V$. 
+
+\pf Say $M$ is a nontrivial submodule of $V$. Take some nonzero $m \in M$. By closure under the ring action, $x.m \in M$. I claim both $m$ and $x.m$ are nonzero and orthogonal, in the sense that $$x.m = \begin{bmatrix} 0 & 1 \\ -1 & 0\end{bmatrix} \begin{bmatrix} m_1 \\ m_2 \end{bmatrix} = \begin{bmatrix} m_2 \\ -m_1\end{bmatrix} \text{ and } (x.m)^T m = \begin{bmatrix} m_1 & m_2\end{bmatrix} \begin{bmatrix} m_2 \\ -m_1\end{bmatrix} = 0.$$ So $x.m$ and $m$ span $\RR^2$, which gives $M \supset \RR^2$. \qedsymbol
 
 ### [@DF04, number 10.1.19]
 
-\gvn Let $F = \RR$, let $V = \RR^2$, and let $T$ be the linear transformation from $V$ to $V$ that is projection onto the $y$-axis. 
+\gvn Say we have a linear transformation $T \colon \RR^2 \to \RR^2$ with associated matrix $$A_T = \begin{bmatrix} 0 & 0 \\ 0 & 1\end{bmatrix}, \quad \text{ with respect to the standard basis.}$$ As before, consider $V = \RR^2$ as an $\RR[x]$-module where $x$ acts by the linear transformation $x.v = Av$.
 
-\wts $V$, $0$, the $x$-axis and the $y$-axis are the only $F[x]$-submodules for this $T$.
+\wts If $M$ is a submodule of $V$, then $M$ is trivial, all of $V$, the $x$-axis, or the $y$-axis.
+
+\pf Let $M$ be a nontrivial proper submodule of $V$. In particular, $M$ is an $\RR$-linear proper subspace, and as an $\RR$-vector space, $M$ has dimension exactly $1$. It follows that $M$ is of the form $\{\alpha v : \alpha \in \RR\}$ for some nonzero $v \in M$. Consider $Av$, which has exactly one nonzero component. Because $v$ is an eigenvector of the matrix $A$, it must be that $v$ has exactly one nonzero component. So $M$ is either the $x$- or $y$-axis. \qedsymbol
 
 ### [@DF04, number 10.1.20]
 
 \gvn Let $F = \RR$, let $V = \RR^2$, and let $T$ be the linear transformation from $V$ to $V$ that is rotation clockwise about the origin by $\pi$ radians.
 
 \wts Every subspace of $V$ is an $F[x]$-submodule for this $T$.
+
+\pf Say $\RR^2$ is an $\RR[x]$-module with the action of $x \in \RR[x]$ given by $$x.v = Av \quad \text{ where } \quad A = \begin{bmatrix} -1 & 0 \\ 0 & -1\end{bmatrix} \quad \text{ w.r.t. the standard basis.}$$ The property of being an $\RR[x]$-submodule is stronger than that of being an $\RR$-linear subspace, so the submodules of $\RR^2$ are all subspaces. Conversely, if $V \subset \RR^2$ is a subspace, then $V$ is an abelian group. For any $v \in V$, the image of $v$ under the action of $x$ is $x.v = -v$. So $V$ is stable under the linear transformation; whence $V$ is an $\RR[x]$-submodule. \qedsymbol
 
 ### [@DF04, number 10.1.21]
 
@@ -121,5 +132,10 @@ elsewhere.
 
 - $M$ is a submodule of $R$ when $R$ is considered as a left module over itself.
 - $M$ is *not* a submodule of $R$ when $R$ is considered as a right module.
+
+\pf In either case (of $\sM_n(F)$ being a left or right module over itself), the set $M$ is an abelian subgroup of the ring $\sM_n(F)$. 
+
+- Now consider $\sM_n(F)$ as a left module. Let $[a_{ij}] \in \sM_n(F)$ and $[m_{jk}] \in M$ (with respect to the standard unit basis for $F^n$). Then $$[a_{ij}][m_{jk}] = \left[\sum_{j=1}^n a_{ij} m_{jk}\right] \in M,$$ as $m_{jk} = 0$ whenever the index $k > 0$. So $M$ is closed under scalar multiplication. So $M$ is a left submodule.
+- On the other hand, consider $\sM_n(F)$ as a right module. Then it's not necessarily true that for $[a_{jk}] \in \sM_n(F)$ and $[m_{ij}] \in M$ that $$[m_{ij}][a_{jk}] = \left[\sum_{j=1}^n m_{ij} a_{jk}\right]$$ will be in $N$, e.g., when $a_{12} \neq 0$. Because $M$ is not closed under scalar multiplication, $M$ is *not* (right) submodule. \qedsymbol
 
 ## References
