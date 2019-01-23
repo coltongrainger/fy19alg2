@@ -1,14 +1,13 @@
 ---
-title: "Module Theory: Basic Definitions and Examples"
+title: "Module Theory: Basic Results"
 author: Colton Grainger (MATH 6140 Algebra 2)
 date: 2019-01-14
+revised: 2019-01-22
 bibliography: /home/colton/coltongrainger.bib
 nonumbering: true
 ---
 
-\setcounter{section}{0}
-
-## Assignment due 2019-01-13
+## Assignment due 2019-01-23
 
 ### [@DF04, number 10.1.1]
 
@@ -16,11 +15,23 @@ nonumbering: true
 
 \wts $0m = 0$ and $(-1)m = -m$ for all $m \in M$.
 
+\pf Let $0_R \in R$ and $0_M \in M$ be the respective additive identities. Then For all $m \in M$, by distributivity, $1.m = (1 + 0_R).m = 1.m + 0_R.m$. We have $$m + 0_R.m = m \quad \text{ so by cancellation in $M$ } \quad 0_R.m = 0_M.$$ Knowing $0_R.m = 0_M$ implies $0_M = (1 + (-1))_R.m = 1.m + (-1).m$, so that $$-m = -(1.m) = (-1).m.$$ \qedsymbol
+
 ### [@DF04, number 10.1.3]
 
 \gvn Say $rm = 0$ for some $r \in R$ and some $m \in M$ with $m \neq 0$.
 
 \wts There is no $s \in R$ such that $sr =1$.
+
+\pf Suppose for contradiction there's $s \in R$ such that $sr = 1$. Then both
+\begin{align*} sr.m &= m\\ r.m = 0 \end{align*}
+Try adding:
+\begin{align*} s.m + sr.m &= s.m + s.(r.m) &\text{ by module axioms }\\
+    &= s.(m+r.m) &\text{ by distributivity of scalar multiplication }\\
+    &= s.(m + 0) &\text{ by hypothesis }\\
+    &= s.m,
+\end{align*}
+so $sr.m$ had better be $0_M$. But it's not, for $sr = 1$ implies $sr.m = m$, which together with the last argument is absurd. \qedsymbol
 
 ### [@DF04, number 10.1.4]
 
@@ -30,6 +41,11 @@ nonumbering: true
     
 a. $P = \{(x_1, x_2, \ldots, x_n) : x_i \in \fa_i\}$,
 b. $N = \left\{(x_1, x_2, \ldots, x_n) : x_i \in R \text{ and } \sum_i x_i = 0\right\}$.
+
+\pf 
+
+a. $P$ is nonempty, for $\prod 0_R$ is in each ideal, so in $P$ as well. Now say $x$ and $y$ are in $P$. The $i$th components of $x$ and $y$ are in each $\fa_i$, so the sum $x + y$ has $i$th component in each $\fa_i$ by closure of ideals under addition. Whence $x + y \in P$. Lastly, take a ring element $\alpha \in R$. Then $\alpha x  = \prod \alpha x_i$. By closure of ideals under left multiplication, $\alpha x_i \in \fa_i$. We conclude $\alpha x \in P$. 
+b. $N$ is nonempty, as it contains the additive identity of $R^n$. Let $x$, $y$ be in $N$. Then $x+y$ has components summing $$\sum_i (x_i + y_i) = \sum_i x_i + \sum_i y_i = 0.$$ So $x + y \in N$. Consider $\alpha \in R$. Then $\alpha x$ has the sum $$\sum_i \alpha x_i = \alpha\left(\sum_i x_i\right) = \alpha.0 = 0,$$ by distributivity of multiplication over addition and previous argument [@DF04, number 10.1.3]. So $\alpha x \in N$. So $N$ is a submodule of $R^n$. \qedsymbol
 
 ### [@DF04, number 10.1.5]
 
