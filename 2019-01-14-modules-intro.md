@@ -15,7 +15,7 @@ nonumbering: true
 
 \wts $0m = 0$ and $(-1)m = -m$ for all $m \in M$.
 
-\pf Let $0_R \in R$ and $0_M \in M$ be the respective additive identities. Then For all $m \in M$, by distributivity, $1.m = (1 + 0_R).m = 1.m + 0_R.m$. We have $$m + 0_R.m = m \quad \text{ so by cancellation in $M$ } \quad 0_R.m = 0_M.$$ Knowing $0_R.m = 0_M$ implies $0_M = (1 + (-1))_R.m = 1.m + (-1).m$, so that $$-m = -(1.m) = (-1).m.$$ \qedsymbol
+\pf Let $0_R \in R$ and $0_M \in M$ be the respective additive identities. Then for all $m \in M$, by distributivity, $1.m = (1 + 0_R).m = 1.m + 0_R.m$. We have $$m + 0_R.m = m \quad \text{ so by cancellation in $M$ } \quad 0_R.m = 0_M.$$ Knowing $0_R.m = 0_M$ implies $0_M = (1 + (-1))_R.m = 1.m + (-1).m$, so that $$-m = -(1.m) = (-1).m.$$ \qedsymbol
 
 ### [@DF04, number 10.1.3]
 
@@ -52,6 +52,8 @@ b. $N$ is nonempty, as it contains the additive identity of $R^n$. Let $x$, $y$ 
 \gvn Consider a left ideal $\fa$ of $R$. Let $$\fa M = \left\{\sum_\text{finite} a_i m_i : a_i \in \fa, m_i \in M\right\}.$$
 
 \wts We have $\fa M$ as a submodule of $M$.
+
+\pf First, both $0_R \in \fa$ and $0_M \in M$ so that $0 \in \fa M$. Second, let $x, y \in \fa M$ where $x = \sum_i a_i m_i$ and $y = \sum_j b_j n_j$. This sum of finite sums is finite, so that $x + y$ is in $\fa M$. Lastly, for any $r \in R$, consider $rx = r\left(\sum_i a_i m_i\right) = \sum_i (ra_i) m_i \in \fa M$. \qedsymbol
 
 ### [@DF04, number 10.1.6]
 
@@ -97,7 +99,7 @@ b. Let $R$ have at least the pair of zero divisors $\alpha$ and $\beta$ with $\a
 \wts This action cannot be extended to make $M$ into a $\QQ$-module.
 
 *Proof by contradiction.* Suppose $\QQ$ extends the action of $\ZZ$ on $M$. Pick any nonzero $m \in M$. I claim for each $n \in \
-\NN$, $\frac 1 n . m \neq 0$. To wit, by the unital module axiom, $$m = n . \left( \frac 1 n . m \right) \neq n.( 0 ) = 0 \quad \text{ by assumption than $m$ is nonzero.}$$ I claim for each distinct pair $a, b \in \NN$, the image of $m$ under the action of $\frac 1 a$ and $\frac 1 b$ is distinct. Else we could find $$ 0 = \frac 1 a . m - \frac 1 b . m = \left(\frac 1 a - \frac 1 b\right).m = \frac 1 {ab} .m,$$ which is prevented by the previous claim. Since $\NN$ is infinite, the image of $\frac 1 n . m$ in $M$ as $n$ ranges through $\NN$ must be infinite, which is absurd! By hypothesis, $M$ is a finite group. \qedsymbol
+\NN$, $\frac 1 n . m \neq 0$. To wit, by the unital module axiom, $$m = n . \left( \frac 1 n . m \right) \neq n.( 0 ) = 0 \quad \text{ by assumption than $m$ is nonzero.}$$ I claim for each distinct pair $a, b \in \NN$, the image of $m$ under the action of $\frac 1 a$ and $\frac 1 b$ is distinct. Else we could find $$ 0 = \frac 1 a . m - \frac 1 b . m = \left(\frac 1 a - \frac 1 b\right).m = \frac 1 {ab} .m,$$ which is prevented by the previous claim. Since $\NN$ is infinite, the image of $\frac 1 n . m$ in $M$ as $n$ ranges through $\NN$ must be infinite, which is absurd! (By hypothesis, $M$ is a finite group.) \qedsymbol
 
 ### [@DF04, number 10.1.18]
 
