@@ -1,0 +1,480 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{lipsum}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{bold-extra}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[makeroom]{cancel}
+\usepackage{hanging}
+\usepackage{stmaryrd}
+\usepackage{enumerate}
+\usepackage{color, soul}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{mathdots}
+\usepackage{fullpage}
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+%theorems, etc.
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{lem}{Lemma}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{defn}{Definition}
+\newtheorem*{conj}{Conjecture}
+\newtheorem*{exam}{Example}
+\newtheorem*{alg}{Algorithm}
+\newtheorem*{hw}{Exercise}
+\newtheorem*{note}{Note}
+\newtheorem*{rem}{Remark}
+
+\newcommand{\dfn}{\textbf{Definition. }}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+%========= Spacing and format
+\newcommand{\cen}{\centerline}
+\newcommand{\hang}{\hangindent=0.8cm}
+\newcommand{\nhang}{\hangindent=0cm}
+\newcommand{\nf}{\normalfont}
+\newcommand{\fl}{\noindent}
+\newcommand{\vs}{\vspace{0.7em}}
+\newcommand{\vv}{\\\vs}
+\newcommand{\nl}{\vspace{7em}}
+\renewcommand{\hl}{}
+
+
+%========= Common Math commands
+\newcommand{\ex}{\exists}
+\newcommand{\nin}{\not\in}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\oa}{\overrightarrow}
+\newcommand{\lbb}{\llbracket}
+\newcommand{\rbb}{\rrbracket}
+\newcommand{\p}{\prime}
+\newcommand{\wh}{\widehat}
+\newcommand{\os}{\overset}
+\newcommand{\us}{\underset}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\ol}{\overline}
+\newcommand{\td}{\widetilde}
+\newcommand{\seq}{\subseteq}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\im}{\text{im}}
+\newcommand{\inv}{^{-1}}
+
+
+
+
+%========= Math letters
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\fs}{\mathscr{S}} %fancy S
+\newcommand{\ff}{\mathscr{F}} %fancy F
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\bs}{\mathbb{S}}
+
+
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\fke}{\mathfrak{e}}
+\newcommand{\al}{\alpha}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\be}{\beta}
+\newcommand{\Lm}{\Lambda}
+\newcommand{\lm}{\lambda}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\sig}{\sigma}
+\newcommand{\Tht}{\Theta}
+\newcommand{\tht}{\theta}
+\newcommand{\vphi}{\varphi}
+\newcommand{\vep}{\varepsilon}
+
+
+
+%========= Linear Algebra
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+\newcommand{\bsm}{\left( \begin{smallmatrix}}
+\newcommand{\esm}{\end{smallmatrix}\right)}
+\newcommand{\hh}{\hspace{2em}}
+\newcommand{\vect}{\overset{\rightharpoonup}}
+
+
+%========= Algebra notation
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Inn}{\text{Inn}}
+\newcommand{\Tor}{\text{Tor}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\End}{\text{End}}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\Fix}{\text{Fix}}
+
+
+%========= Analysis notation
+\newcommand{\M}{\mathcal{M}} 
+
+
+
+%========= Topology notation
+\newcommand{\YY}{\mathcal{Y}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\CS}{\mathcal{S}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\FB}{\mathfrak{B}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\wt}{\widetilde}
+\newcommand{\es}{\varnothing}
+
+
+
+%========= Diff. Geo Shorthand
+\newcommand{\bv}{\textbf{v}}
+\newcommand{\bw}{\textbf{w}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\BS}{\mathbb{S}}
+\newcommand{\BSS}{\mathbb{S}^1}
+\newcommand{\BSN}{\mathbb{S}^n}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\Cin}{C^\infty}
+\newcommand{\px}{\widehat{x}}
+\newcommand{\lh}  %left hook
+{\mathbin{\mathpalette\blh\relax}}
+\newcommand{\blh}[2]{\raisebox{\depth}{\scalebox{1}[-1]{$#1\lnot$}}} 
+
+
+\begin{document}
+\section*{Vector Spaces}
+\setcounter{thm}{0}
+
+\begin{defn}
+If $F$ is an field and $V$ is an $F$-module, then $V$ is called a \textit{vector space over $F$}.
+\end{defn}
+
+\nl
+
+\begin{defn}\nl
+\begin{enumerate}
+\item A subset $S$ of $V$ is called a set of \textbf{\textit{linearly independent}} vectors if an equation $\al_1v_1+\cdots +\al_nv_n = 0$ with $\al_1,\ldots \al_n\in F$ and $v_1,\ldots, v_n\in S$ implies $\al_1 = \al_2 = \cdots = \al_n = 0$. \hl{(Note: an infinite set is linearly independent if this condition holds for any finite subset.)}
+\item A \textit{basis} of a vector space $V$ is an \textbf{\textit{ordered set}} of linearly independent vectors which span $V$. In particular, two bases sill be considered different even if one is simply a rearrangement of the other. This is sometimes referred to as an \textit{ordered basis}.
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{prop}
+Assume that $\A = \{v_1,v_2,\ldots, v_n\}$ spans the vector space $V$ but no proper subset of $\A$ spans $V$. Then $\A$ is a basis of $V$. \hl{In particular, any finitely generated vector space over $F$ is a free $F$-module.}
+\end{prop}
+
+\nl
+
+\begin{thm}\hl{\textit{(A Replacement Theorem)}}
+Assume $\A = \{a_1,a_2,\ldots,a_n\}$ is a basis for $V$ containing $n$ elements and $\{b_1,b_2,\ldots, b_m\}$ is a set of linearly independent vectors in $V$. Then there is an ordering $a_1,a_2,\ldots,a_n$ such that for each $k\in \{1,2,\ldots,m\}$ the set $\{b_1,\ldots, b_k, a_{k+1}, \ldots, a_n\}$ is a basis of $V$. In other words, the elements of $b_1,b_2,\ldots, b_m$ can be used to successively replace the elements of the basis $\A$, still retaining a basis. In particular $n\geq m$
+\end{thm}
+
+\nl
+
+\begin{cor}\nl
+\begin{enumerate}
+\item Suppose $V$ has a finite basis with $n$ elements. Any set of linearly independent vectors has $\leq n$ elements. Any spanning set has $\geq n$ elements.
+\item If $V$ has some finite basis, then any two bases of $V$ have the same cardinality.
+\end{enumerate}
+\end{cor}
+
+\nl
+
+\begin{defn}
+If $V$ is a finitely generated $F$-module the cardinality of any basis is called the \textit{dimension} of $V$ and is denoted $\dim_F(V)$, or just $\dim(V)$ when $F$ is clear from the context, and $V$ is said to be \textit{finite dimensional over $F$}. If $V$ is not finitely generated, $V$ is said to be infinite dimensional.
+\end{defn}
+
+\nl
+
+\begin{cor}
+If $A$ is a set of linearly independent vectors in the finite dimensional vector space $V$, then there exists a basis of $V$ containing $A$
+\end{cor}
+
+\nl
+
+\begin{thm}
+If $V$ is an $n$ dimensional vector space over $F$, the $V\cong F^n$. In particular, any two finite dimensional vector spaces over $F$ of the same dimension are isomorphic.
+\end{thm}
+
+\begin{proof}
+Let $v_1,v_2,\ldots,v_n$ be a basis for $V$. Define the map 
+\[\vphi:F^n\ra V:(\al_1,\al_2,\ldots,\al_n)\mapsto\al_1v_1 + \al_2v_2+\cdots+\al_n v_n.\]
+The map $\vphi$ is clearly $F$-linear, is surjective since the $v_i$ span $V$, and is injective since the $v_i$ are linearly independent, hence is an isomorphism.
+\end{proof}
+
+\nl
+
+\begin{thm}
+Let $V$ be a vector space over $F$ and let $W$ be a subspace of $V$. Then $V/W$is a vector space with $\dim(V) = \dim(W) + \dim(V/W)$.
+\end{thm}
+
+\nl
+
+\begin{cor}
+Let $\vphi:V\ra U$ be a linear transformation of vector spaces over $F$. Then $\ker(\vphi)$ is a subspace of $V$, $\vphi(V)$ is a subspace of $U$, and $\dim(V) = \dim(\ker(\vphi)) + \dim(\vphi(V))$.
+\end{cor}
+
+\nl
+
+\begin{cor}
+Let $\vphi:V\ra U$ be a linear transformation of vector spaces of the same finite dimension. Then the following are equivalent
+\begin{enumerate}
+\item $\vphi$ is an isomorphism
+\item $\vphi$ is injective, i.e., $\ker(\vphi) = 0$
+\item $\vphi$ is surjective
+\item $\vphi$ sends a basis of $V$ to a basis of $W$.
+\end{enumerate}
+\end{cor}
+
+\nl
+
+\begin{defn}
+If $\vphi:V\ra U$ is a linear transformation of vector spaces over $F$, $\ker(\vphi)$ is sometimes called the \textit{\textbf{null space}} of $\vphi$. and the dimension of $\ker(\vphi)$ is called the \textit{\textbf{nullity}} of $\vphi$. The dimension of $\vphi(V)$ is called the \textit{\textbf{rank}} of $\vphi$. If $\ker(\vphi) = 0$, then the transformation is said to be \textit{\textbf{nonsingular}}.
+\end{defn}
+
+\nl
+
+\begin{defn}
+The $m \times m$ matrix $A = (a_{ij})$ associated to the linear transformation $\vphi$ is said to \textit{represent} the linear transformation $\vphi$ with respect to the bases $\BB, \EE$. Similarly, $\vphi$ is the linear transformation represented by $A$ with respect to the bases $\BB, \EE$.
+\end{defn}
+
+\nl
+
+\begin{thm}
+Let $B$ be a vector space over $F$ of dimension $n$ and let $W$ be a vector space over $F$ of dimension $m$, with bases $\BB, \EE$ respectively. Then the map $\Hom_F(V, W)\ra M_{m\times n}(F)$ from the space of linear transformations from $v$ to $W$ to the space of $m\times n$ matrices with coefficients in $F$ defined by $\vphi\mapsto M_\BB^\EE(\vphi)$ is a vector space isomorphism. In particular, there is a bijective correspondence between linear transformations and their associated matrices with respect to a fixed choice of bases.
+\end{thm}
+
+\nl
+
+\begin{cor}
+The dimension of $\Hom_F(V,W)$ is $(\dim(V))(\dim(W))$.
+\end{cor}
+
+\nl
+
+\begin{defn}
+An $m\times n$ matrix $A$ is called \textit{\textbf{nonsingular}} if $Ax = 0$ with $x\in F^n$ implies $x = 0$.
+\end{defn}
+
+\nl
+
+\begin{thm}
+With notation as above $M_\BB^\EE(\vphi\circ \psi) = M_\BB^\EE(\vphi) M_\BB^\EE(\psi)$.
+\end{thm}
+
+\nl
+
+\begin{cor}
+Matrix multiplication is associative and distributive. An $n\times n$ matrix $A$ is nonsingular if and only if it is invertible.
+\end{cor}
+
+\nl
+
+\begin{cor}\nl
+\begin{enumerate}
+\item If $\BB$ is a basis of the $n$-dimensional space $V$, the map $\vphi\mapsto M_\BB^\BB(\vphi)$ is a ring and a vector space isomorphism of $\Hom_F(V,V)$ onto the space $M_n(F)$ of $n\times n$ matrices with coefficients in $F$.
+\item $GL(V)\cong GL_n(F)$ where $\dim(V) = n$. 
+\end{enumerate}
+\end{cor}
+
+\nl
+
+\begin{defn}
+If $A$ is any $m\times n$ matrix with entries of $F$, the \textit{\textbf{row rank}} of $A$ is the maximal number of linearly independent rows of $A$.
+\end{defn}
+
+\nl
+
+\begin{defn}
+Two $n\times n$ matrices $A$ and $B$ are said to be \textit{\textbf{similar}} if the is an invertible $n\times n$ matrix $P$ such that $P\inv A P = B$. Two linear transformations $\vphi$ and $\psi$ from a vector space $V$ to itself are said to be \textit{similar} if the is a nonsingular linear transformation $\xi$
+\end{defn}
+
+\nl
+
+\begin{defn}\nl
+\begin{enumerate}
+\item For $V$ any vector space over $F$ let $V^* = \Hom_F(V,F)$ be the space of linear transformations from $V$ to $F$, called the \textit{\textbf{dual space}} of $V$. Elements of $V^*$ are called \textit{\textbf{linear functionals}}.
+\item If $\BB  = \{v_1,v_2,\ldots,v_n\}$ is a basis of the finite dimensional space $V$, define $v_i^* \in V^*$ for each $i = 1..n$ by its action on the basis $\BB$:
+\[v_i^*(v_j) = \begin{cases}1, & \text{if } i = j\\
+0, & \text{if } i \neq j\end{cases}\qquad 1\leq j\leq n.\]
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{prop}
+With notations as above, $\{v_1^*,v_2^*,\ldots,v_n^*\}$ is a basis of $V^*$. In particular, if $V$ is finite dimensional then $V^*$ has the same dimension as $V$.
+
+\begin{proof}
+(Copied from D\&F) Observe that since $V$ is finite dimensional, $\dim(V^*) = \dim(\Hom_F(V,F)) = \dim(V) = n$ (\textcolor{red}{Corollary 11.11}), so since there are $n$ of the $v_i^*$'s it suffices to prove that they are linearly independent. If
+\[\al_1v_1^* + \al_2v_2^* + \cdots + \al_nv^n = 0\quad \text{in } \Hom_F(V,F),\]
+then applying this element to $v_i$ and using th equation above gives us that $\al_i = 0$. Since $i$ is arbitrary these elements are linearly independent.
+\end{proof}
+\end{prop}
+
+\nl
+
+\begin{defn}
+The basis $\{v_1^*,v_2^*,\ldots,v_n^*\}$ of $V^*$ is called the \textit{\textbf{dual basis}} to  $\{v_1,v_2,\ldots,v_n\}$.
+\end{defn}
+
+\nl
+
+\begin{thm}
+There is a natural injective linear transformation from $V$ to $V^{**}$. If $V$ is finite dimensional then this linear transformation is an isomorphism. 
+
+\textit{Sketch of proof.} Let $v\in V$ and define the evaluation map $E_v:V^*\ra F:f\mapsto f(v)$. This is a linear transformation from $V^*$ to $F$, and so is an element of $\Hom_F(V^*, F) = V^{**}$. This defines a natural map $\vphi: V\ra V^{**}:v\mapsto E_v$. This map is injective for all $V$ and $\vphi$ is an isomorphism if $V$ is finite dimensional.
+\end{thm}
+
+\nl
+
+\begin{thm}
+Let $V,W$ be finite dimensional vector spaces over $F$ with bases $\BB, \EE$, respectively and let $\BB^*,\EE^*$ be the dual bases . Fix some $\vphi\in \Hom(V,W)$. Then for each $f\in W^*$, the composite $f\circ \vphi$ is a linear transformation from $V$ to $F$, that is $f\circ \vphi\in V^*$. Thus, we can define a map $\vphi^*:W^* \ra V^*:f\mapsto f\circ \vphi$ (called the \textit{\textbf{pullback}} of $f$) and the matrix $M_{\EE^*}^{\BB^*}(\vphi^*)$ is the transpose of th matrix $M_\BB^\EE(\vphi)$.
+\end{thm}
+
+\nl
+
+\begin{cor}
+For any matrix $A$, the row rank of $A$ equals the column rank of $A$.
+\end{cor}
+
+\nl
+
+\begin{defn}\nl
+\begin{enumerate}
+\item A map $\vphi:V_1\times V_2\times \cdots \times V_n\ra W$ is called \textit{\textbf{multilinear}} if for each fixed $i$ and fixed $i$ and fixed elements $v_j\in V_j$, $j\neq i$, the map
+\[V_i \ra W\qquad \text{defined by}\qquad x\mapsto \vphi(v_1,\ldots,v_{i-1},x,v_{i+1},\ldots, v_n)\]
+is an $R$-module homomorphism. If $V_i = V$, $i = 1,2,\ldots, n$, then $\vphi$ is called an $n$\textit{-multilinear function on $V$}, and if in addition $W = R$, $\vphi$ is called an \textit{$n$-multilinear form on $V$}.
+
+\item An $n$-multilinear function $\vphi$ on $V$ is called \textit{alternating} if $\vphi(v_1, v_2,\ldots, v_n) = 0$ whenever $v_i = v_{i + 1}$ for some $i\in \{1,2,\ldots, n-1\}$. The function $\vphi$ is called \textit{symmetric} if interchanging $v_i$ and $v_j$ for any $i$ and $j$ in $(V_1,v_2,\ldots, v_n)$ does not alter the value of $\vphi$ on this $n$-tuple.
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{prop}
+Let $\vphi$ be an $n$-multilinear alternating function on $V$. Then 
+\begin{enumerate}
+\item $\vphi(v_1,\ldots, v_{i-1}, v_{i + 1}, v_i, v_{i + 2}, \ldots, v_n) = -\vphi(v_1, v_2, \ldots, v_n)$ for any $i\in \{1,2,\ldots, n-1\}$.
+
+\item For each $\sigma\in S_n$, $\vphi(v_{\sigma(1)}, v_{\sigma(2)},\ldots, v_{\sigma(n)}) = sgn(\sigma)\vphi(v_1, v_2, \ldots, v_n)$.
+
+\item If $v_i = v_j$ for any pair of distinct $i,j\in \{1,2,\ldots, v_n\}$ then $\vphi(v_1, v_2, \ldots, v_n) = 0$.
+
+\item If $v_i$ is replaced by $v_i + \al v_j$ in $(v_1,v_2,\ldots,v_n)$ for any $j\neq i$ and any $\al \in R$, the value of$\vphi$ on this $n$-tuple is not changed.
+\end{enumerate}
+\end{prop}
+
+\nl
+
+\begin{prop}
+Assume $\vphi$ is an $n$-multilinear alternating function on $V$ and that for some $v_1,v_2,\ldots,v_n$ and $w_1,w_2,\ldots,w_n\in V$ and some $\al_{ij}\in R$ we have
+\begin{align*}
+w_1 &= \al_{11}v_1 + \al_{21}v_2 + \cdots + \al_{n1}v_n\\
+w_2 &= \al_{12}v_1 + \al_{22}v_2 + \cdots + \al_{n2}v_n\\
+\vdots\\
+w_n &= \al_{1n}v_1 + \al_{2n}v_2 + \cdots + \al_{nn}v_n.\\
+\end{align*}
+Then 
+\[\vphi(w_1,w_2,\ldots,w_n) = \sum_{\sigma\in S_n} sgn(\sigma)\al_{\sigma(1)1}\al_{\sigma(2)2}\cdots\al_{\sigma(n)n}\vphi(v_1,v_2,\ldots,v_n).\]
+\end{prop}
+
+\nl
+
+\begin{defn}
+An $n\times n$ \textit{\textbf{determinant function}} on $R$ is any function 
+\[\det:M_{n\times n}(R)\ra R\]
+that satisfies the following two axioms:
+\begin{enumerate}
+\item $\det$ is an $n$-multilinear alternating form on $R^n( = V)$, where the $n$-tuples are the $n$ columns of the matrices in $M_{n\times n}(R)$.
+\item $\det(I) = 1$.
+\end{enumerate}
+\end{defn}
+
+\nl
+
+\begin{thm}
+There is a unique $n\times n$ determinant function on $R$ and it can be computed for any $n\times n$ matrix $(\al_{ij})$ by the formula:
+\[det(\al_{ij}) = \sum_{\sigma\in S_n} sgn(\sigma) \al_{\sigma(1)1} \al_{\sigma(2)2} \cdots \al_{\sigma(n)n}\]
+\end{thm}
+
+\nl
+
+\begin{cor}
+The determinant is an $n$-multilinear function of the rows of $M_{n\times n}(R)$ and for any $n\times n $ matrix $A$, $\det(A) = \det(A^t)$.
+\end{cor}
+
+\nl
+
+\begin{thm}\textit{(Cramer's Rule)}
+If $A_)1,A_23,\ldots, A_n$ are the columns of an $n\times n$ matrix $A$ and $B = \be_1A_1 + \be_2A_2 + \cdots + \be_nA_n$, for some $\be_1,\ldots, \be_n\in R$, then
+\[\be_i\det(A) = \det(A_1,\ldots,A_{i-1}, B, A_{i+1},\ldots, A_n).\]
+\end{thm}
+
+\nl
+
+\begin{cor}
+If $R$ is an integral domain, then $\det(R) = 0$ for $A\in M_n(R)$ if and only if the columns of $A$ are $R$-linearly dependent as elements of the free $R$-module of rank $n$. Also $\det(A) = 0$ if and only if the rows of $A$ are $R$-linearly dependent.
+\end{cor}
+
+\nl
+
+\begin{thm}
+For matrices $A, B\in M_{n\times n}(R)$, $\det(A,B) = \det(A)\det(B)$.
+\end{thm}
+
+\nl
+
+\begin{defn}
+Let $A = (\al_{ij})$ be an $n\times n$ matrix. For each $i,\ j$, let $A_{ij}$ be the $n-1\times n-1$ matrix obtained from $A$ by deleting its $i^{th}$ row and $j^{th}$ column. Then $(-1)^{i + j}\det(A_{ij})$ is called the \textit{\textbf{$ij$ cofactor of $A$.}}
+\end{defn}
+
+\nl
+
+\begin{thm}\textit{(The Cofactor Expansion Formula along the $i^{th}$ row)}
+If $A = (\al_{ij})$ is an $n\times n$ matrix, then for each fixed $i\in \{1,2,\ldots n\}$ the determinant of $A$ can be computed from the formula
+\[\det(A) = (-1)^{i+1}\al_{i1}\det(A_{i1}) + (-1)^{i+2}\al_{i2}\det(A_{i2}) + \cdots + (-1)^{i+n}\al_{in}\det(A_{in}).\]
+\end{thm}
+
+\nl
+
+\begin{thm}\textit{(Cofactor Formula for the Inverse of a Matrix)} Let $A = (\al_{ij})$ be an $n\times n$ matrix and let $B$ be the transpose of is matrix of cofactors, i.e., $B = (\be_{ij})$, where $\be_{ij} = (-01)^{i + j}\det(A_{ji})$, $1\leq ii,j\leq n$. Then $AB = BA = \det(A)I$. Moreover, $\det(A)$ is a unit in $R$ if and only if $A$ is a unit in $M_{n\times n}(R)$; in this case the matrix $\frac{1}{\det(A)} B$ is the inverse of $A$.
+\end{thm}
+\end{document}
