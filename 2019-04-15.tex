@@ -1,0 +1,148 @@
+\begin{quote}\textit{
+    ``The end of Dummit and Foote trailing off into nonsense and pet topics.''
+}\end{quote}
+
+\begin{defn}[Normal basis]
+    A \term{normal basis} for a Galois extension $K/F$ is an orbit of some element $\alpha \in K$ under the action of $G = \Gal(F/K)$ such that $G(\alpha)$ is a basis for $F$ as a $K$-vector space.
+\end{defn}
+
+We'll soon give an existence proof along the lines of ``each Galois extension has a normal basis'' by producing an such an element $\alpha$. 
+
+\begin{ex}[]
+    Show that a finite, separable, Galois extension $K/F$ has an element $\alpha$ whose orbit forms a normal basis.
+\end{ex}
+
+Today we'll jump around a bit, covering odds and ends of 14.2--14.3.
+
+\begin{lem}[]
+    \label{polydivisors}
+    The natural numbers $d,n \in \N$ satisfy $d \mid n$ if and only if the polynomials $x^d -1$ and $x^n -1$ in $\Z[x]$ satisfy $x^d - 1 \mid x^n -1$.
+    \begin{proof}
+    Suppose $d \mid n$. Then let $r = \frac n d$. Since $x -1 | x^r -1$, changing variables $x^d \mapsto x$ produces $x^d -1 \mid x^n -1$ in $\Z[x]$. Conversely, if $x^d + 1 \mid x^n -1$, divide out $x-1$. Then examine
+    \[
+        1+ x + \cdots + x^{d-1} | 1 + x + \cdots + x^{n-1}  \qq{and evaluate at $x=1$.}
+    \]
+    \end{proof}
+\end{lem}
+
+\begin{lem}[Divisors of $24$]
+    \label{24divisors}
+    
+    Suppose $a,n \in \N$ are coprime (positive?) integers and $n \mid 24$ and $(a,n) = 1$. Then $a^2 \equiv 1 \pmod{n}$. In particular, $1,3,5,7$ all square to $1$ modulo $8$.
+\end{lem}
+
+\begin{ex}[$x^4 + 1$ is irreducible over $\Z$ but reduces modulo every prime.]
+    \label{moduloeachprime}
+    
+    Recall that the polynomial $x^4 +1$ reduces into quadratic factors over $\R$, but is irreducible over $\Q$. (We are guaranteed a root for any cubic polynomial over $\R$ by the intermediate value theorem.) We'll consider $x^4 + 1$ over the finite fields $\Fp$ for all odd primes $p$.
+   
+    I claim (see~\ref{24divisors} and \ref{polydivisors}) that
+    \[
+        x^4 + 1 \mid x^8 -1 \mid x^{p^2 -1} -1 \mid x^{p^2-1} -x
+    .\]
+
+    Therefore, for $K$ the splitting field of $x^4 + 1$ $\Fp$, we deduce that any root $\alpha \in K$ of $x^4 +1 $ is fixed by $\Phi^2$ where $\Phi$ is the Froebenius automorphism.
+    But $\Phi$ generates the automorphism group $\ang{\Phi} = \Aut(\Fp)$! Therefore, the degree of $[K:F]$ is at most $2$. We conclude that $x^4 +1$ reduces in $\Fp[x]$.
+\end{ex}
+
+\begin{ex}[]
+    Here's an alternative argument for \ref{moduloeachprime} in the algebraic closure $\Fp^a$ of $\Fp$.
+    \begin{itemize}
+        \item How is one to determine the fixed points of $\Phi$ in $\Fp^a$?
+        \item Maybe argue that $\Fp^a$ a perfect field (which occurs if and only if the Froebenius map $\Phi$ is an isomorphism).
+        \item With each element of $\Fp^a$ is a $p$th root, consider $x^{p^2} -x$, and deduce that $x^4 +1$ reduces modulo $p$.
+    \end{itemize}
+\end{ex}
+
+\begin{prop}[] \TFAE.
+\begin{itemize}
+    \item $K/F$ is Galois.
+    \item $K/F$ is separable and has the ``one out all out'' property.
+\end{itemize}
+
+\begin{proof}
+In one direction, recall the we've shown that the minimal polynomial of an element $\beta$ in a Galois extension $K/F$ is the product of linear factors with constant terms given by the distinct conjugates of $\beta$.
+
+In the other, \TODO.
+\end{proof}
+\end{prop}
+
+\begin{rem}[Sketch of proof for the fundmental theorem of Galois theory.]
+    Let $K/F$ be a (separable, finite) Galois extension, with $G = \Gal(K/F)$. Let's chat a bit: how are the subfields of $K/F$ and the subgroups of $G$ in Galois correspondence? As an exercise:
+
+    \begin{enumerate}
+        \item Show that there's an injective functor from $\Grp$ into $\Vect$ taking subgroups to their fixed subfields.
+        \[
+            \xymatrix{
+                K \ar@{-}[d]\ar@{-}[r] & 1\ar@{-}[d]\\
+                E \ar@{-}[d]\ar@{-}[r] & H\ar@{-}[d]\\
+                F \ar@{-}[r]  & G}
+        .\]
+
+        \item Verify $[K:E] = H$ and $[K:F] = G$, which imply $[E:F] = \frac { \abs G } {\abs H} = [G:H]$.
+
+        \item Suppose $H$ is the fixing group of the field $E$. For $\sigma \in \Gal(K/F)$, verify\footnote{If we want to fix the image of $E$ under automorphisms  $\sigma(E) = E$ for all $\sigma$, then we need ``$\sigma H \sigma^{-1} = H$'' for all $\sigma$, i.e., $H \triangleleft G$.} that the fixing group of $\sigma(E)$ is ``$\sigma H \sigma^{-1}$''.
+        \item Exhibit a set bijection $\mathrm{Emb} (E/F) \leftrightsquigarrow \set{ \text{cosets of } H \le G }$, with the cosets of $H$ in $G$ indexed by $\tau \in \Gal(K/F)$ (require that $\tau$ restricts to $\sigma$ on $E$).
+        \item Then 
+      \[
+          \tau^{-1} \sigma \qq{ is the identity on $E$, so} \sigma H = \tau H.
+      \]
+
+    \item Here's a sketch.
+    \[
+        \xymatrix{
+            K \ar@{-}[d] & & 1\ar@{-}[d]\\
+            E \ar[r]^\sigma \ar@{-}[d] & \sigma(E) & H\ar@{-}[d]\\
+        F = \Q & & G}
+    .\]
+    \end{enumerate}
+\end{rem}
+
+\begin{prop}[Second isomorphism theorem]
+    Let $K/F$ be a Galois field extension, with $F'/F$ any other field extension. 
+    There's a correspondence $N \leftrightsquigarrow K/F$ and $H \leftrightsquigarrow F'/F$. Then with $H \cap N$ corresponding to $KF'/F$ and $HN$ to $K \cap F'$, we deduce \TODO.
+\end{prop}
+
+\begin{prop}[Intersections of Galois extensions]
+    Say that $K_1/F$ and $K_2/F$ are Galois over $F$. Then 
+    \[
+        \frac{\paren{ K_1 \cap K_2 }}{F} \qand  \frac{\paren{ K_1 K_2 }}{F} \qq{are Galois}
+    .\]
+\end{prop}
+
+\begin{coro}[Elements that agree on the intersection of Galois groups]
+   There's a means to lift $\frac{K_1 K_2}{F}$. How?
+\end{coro}
+
+How to embed $\Q(\sqrt[3]{2})$ in a Galois extension?
+There are gross counter examples here, e.g., $x^p - t \in \Z[t][x]$.
+
+\begin{defn}[Galois closure]
+
+    Say $K \ge E \ge F$ is a tower of field extensions (assume finite and separable). Suppose $K/F$ is maybe not Galois. 
+
+    The analogy for groups is the following: we want to find $N$ normal in $G$, such that $N \le H$, and $N$ is as large as possible in $H$. One can take 
+    \[
+        N := \cap_{g \in G} gHg^{-1}
+    \]
+   to satisfy these requirements.  
+
+   For fields, then, take the composite of the images of the splitting field $\Lambda$ for $F$ in $K$ under the action of $\Gal(K/F)$. The composite of all fields in this orbit form the smallest field extension $E$ such that $E/F$ is Galois:
+    \[
+        E := \cup_{\alpha \in \Gal(K/F)} \alpha^{-1} \Lambda \alpha
+    .\]
+
+\[
+    \xymatrix{
+        K \ar@{-}[d] & 1\ar@{-}[d]\\
+        E \ar@{-}[d] & H\ar@{-}[d]\\
+        F & G}
+.\]
+    
+\end{defn}
+
+
+
+
+
+
