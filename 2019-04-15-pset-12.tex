@@ -1,0 +1,108 @@
+\documentclass[onesided]{ccg-pset}
+\usepackage{fourier}
+\usepackage[T1]{fontenc}
+
+\course{Math 6140}
+\psnum{12}
+\author{Colton Grainger}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item \label{14.2.1} 14.2.1.
+The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ is:
+
+
+
+\item \label{14.2.4} 14.2.4. 
+Let $p$ be a prime. The elements of the Galois group of $x^{p}-2$ over $\Q$ are:
+
+
+
+\item \label{14.2.5} 14.2.5. 
+The Galois group of $x^p-2$ (as in problem~\ref{14.2.4}) is isomorphic to the matrix group
+\[
+    H = \set{\mqty[a & b\\ 0 & 1] \qgiven a,b \in \Fp \qand a \neq 0}
+.\]
+
+
+\item \label{14.2.8} 14.2.8. 
+Suppose $K$ is a Galois extension of $F$ of degree $p^n$ for some prime $p$ and some $n \ge 1$. 
+There are Galois extensions of $F$ contained in $K$ of degrees $p$ and $p^{n-1}$.
+
+
+
+\item \label{14.2.11} 14.2.11.
+Suppose $f(x) \in \Z[x]$ is an irreducible quartic whose splitting field has Galois group $S_4$ over $\Q$. 
+Let $\theta$ be a root of $f(x)$ and set $K = \Q(\theta)$. 
+Then $K$ is an extension of $Q$ of degree $4$ which has no proper subfields.
+We determine if there are any Galois extensions of $\Q$ of degree $4$ with no proper subfields.
+
+
+
+\item \label{14.2.13} 14.2.13.
+If the Galois group of the splitting field of a cubic over $\Q$ is the cyclic group of order $3$, then all the roots of the cubic are real.
+
+\item \label{14.3.1} 14.3.1.
+The factors of $x^8 - x$ as irreducibles in $\Z[x]$ and $\F_2[x]$, respectively, are:
+
+
+\item \label{14.3.3} 14.3.3.
+An algebraically closed field is infinite.
+
+
+\item \label{14.3.7} 14.3.7.
+\begin{enumerate}
+    \item One of $2$, $3$, or $6$ is a square in $\Fp$ for every prime $p$.
+    \item Therefore, for every prime $p$, the polynomial 
+        \begin{equation}
+            \label{allprimes}
+        x^6 - 11x^{4} + 36x^{2} - 36 = \paren{x^{2} -2} \paren{x^{2} -3} \paren{x^{2} -6} 
+        \end{equation}
+        has a root modulo $p$.
+    \item However, the polynomial~\eqref{allprimes} is irreducible over $\Z$.
+\end{enumerate}
+
+
+\item \label{14.3.8} 14.3.8. We exhibit an \term{Artin--Schreier extension}.
+\begin{enumerate}
+    \item The splitting field $E$ of the polynomial $x^p - x -a$ over $\Fp$, where $a \neq 0$ and $a \in \Fp$, is:
+    \item For a root $\alpha$ of $x^p - x -a$, the map $\alpha \mapsto \alpha + 1$ induces an automorphism of $E$ fixing $\Fp$.
+    \item Therefore, the Galois group of $x^p - x -a$ over $\Fp$ is cyclic.
+\end{enumerate}
+ 
+\item \label{14.3.9} 14.3.9.
+Let $q = p^m$ be a power of the prime $p$ and let $\Fq = \F_{p^m}$ be the finite field with $q$ elements. Then let $\sigma_q = \sigma_p^m$ be the $m$th power of the Froebenius automorphism $\sigma_p$, called the \term{$q$-Froebenius automorphism}.
+
+\begin{enumerate}
+    \item The $q$-Froebenius automorphism $\sigma_q$ fixes $\Fq$.
+    \item Every finite extension of $\Fq$ of degree $n$ is the splitting field $K$ of $x^{q^n} -x$ over $\Fq$, hence unique.
+    \item For $K/\Fq$ the unique degree $n$ extension of $\Fq$, we have 
+    \[
+        \Gal(K/\Fq) = \ang{\sigma_q}
+    .\]
+    \item Hence, there's a bijective correspondence
+    \[
+        \set{\mqty{\text{subfields $E$}\\
+                    K \ge E \ge F}} 
+            \leftrightsquigarrow 
+        \set{\mqty{\text{divisors $d$}\\
+                   1 \mid d \mid n}}
+    .\]
+\end{enumerate}
+ 
+\item \label{14.3.10} 14.3.10.
+Let $\phi$ be the Euler totient function, $p$ a prime, and $n$ a natural number. Then
+\[
+    n \qq{divides} \phi(p^n -1)
+.\]
+\begin{proof}
+    Observe that $\phi(p^n -1)$ is the order of the group of automorphisms of a cyclic group of order $p^n -1$.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
