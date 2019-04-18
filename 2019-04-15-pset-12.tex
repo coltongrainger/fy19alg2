@@ -57,8 +57,10 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
         \zeta & \mapsto \zeta^k, & k=1, \ldots, p-1,\\
         \sqrt[p]{ 2 } & \mapsto \zeta^\ell\sqrt[p]{ 2 },  & \ell = 0, \ldots, p-1.
     \end{align}
-    By order considerations, as the degree of $F/\Q$ is $p(p-1)$, the automorphisms in~\eqref{automs} form a complete list.
-    Now let $m$ be an integer $1 < m < p-1$ that is coprime to $p-1$ (we need a generator for the cyclic group of order $p-1$). Then define $\sigma, \tau \in \Gal(F/\Q)$ by
+    By order considerations, the degree of $F/\Q$ is $p(p-1)$, so the automorphisms in~\eqref{automs} form a complete list.
+
+    Choose an integer $m$ such that $1 < m \le p-1$ and $\bar m$ generates $\paren{\Z/p\Z}^\times$. 
+    Then define $\sigma, \tau \in \Gal(F/\Q)$ by
     \[
         \sigma = \begin{cases}
             \zeta \mapsto \zeta^{m}\\
@@ -70,9 +72,9 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
             \sqrt[p]{ 2 } \mapsto \zeta\sqrt[p]{ 2 }
         \end{cases}
     .\]
-    Because $p$ is prime and $\ord\zeta = p$, it is visible that $\ord \tau =p$. We deduce that $\ord \sigma = p-1$ from both $(m, p-1) = 1$ and the fact that ``$\sigma \in \Aut{\ang{ \zeta } } \cong C_{p-1}$'' is a cyclic group.
+    Because $p$ is prime and $\ord\zeta = p$, it follows that $\ord \tau =p$. Because $\bar m$ generates the Galois group $\paren{\Z/p\Z}^\times \cong \Gal{\Q(\xi_p)/\Q}$, it follows that $\ord \sigma = p-1 = \abs{ \paren{\Z/p\Z}^\times }$.
 
-    Moreover, as $\sigma$ and $\tau$ have coprime orders, by Lagrange's theorem, they generate the Galois group. We conclude that, as a set, $\Gal( F/\Q ) = \ang{\tau} \times \ang{\sigma} = C_{p} \times C_{p-1}$. The group structure $\Gal(F / \Q) \cong C_p \rtimes_\psi C_{p-1}$ follows from the isomorphism $\psi \colon \ang{ \sigma } \to \ang{ \tau }$ defined by
+    Moreover, $p$ is the smallest prime dividing the order of $\Gal(F/\Q)$, so $[\ang{\tau}:\Gal{F/\Q}] = p$ implies $\ang{\tau}$ is normal in $\Gal(F/\Q)$. By order considerations, as a set, $\Gal( F/\Q ) = \ang{\tau} \times \ang{\sigma} = C_{p} \times C_{p-1}$. The group structure $\Gal(F / \Q) \cong C_p \rtimes_\psi C_{p-1}$ follows from the isomorphism $\psi \colon \ang{ \sigma } \to \ang{ \tau }$ defined by
     \[
         \psi(\sigma).\tau = \sigma^{-1}\tau\sigma
     .\]
@@ -90,6 +92,13 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
         \sigma \underset{f}{\mapsto} \mqty[ a & 0\\ 0 & 1 ] \qand
         \tau \underset{f}{\mapsto} \mqty[ 1 & 1\\ 0 & 1 ]
     .\]
+    To see that $f$  is a homomorphism, note that $f$ is defined on generators $\sigma$ and $\tau$ of $\Gal(F/\Q)$. Moreover, the image of $\sigma$ and $\tau$ under $f$ satisfy the same relations as in $\Gal{F/\Q}$.
+    \begin{align*}
+        \mqty[ a & 0\\ 0 & 1 ]\mqty[ 1 & 1\\ 0 & 1 ] &= \mqty[ a & a\\ 0 & 1 ] &
+        \mqty[ 1 & 1\\ 0 & 1 ]\mqty[ a & 0\\ 0 & 1 ] &= \mqty[ a & 1\\ 0 & 1 ]\\
+        \mqty[ 1 & 1\\ 0 & 1 ]^p &= \mqty[ 1 & 0\\ 0 & 1 ] &
+        \mqty[ a & 0\\ 0 & 1 ]^{p-1} &= \mqty[ 1 & 0\\ 0 & 1 ]
+    \end{align*}
     Because $H$ has order $p(p-1)$ and $f$ is surjective (by choice of generator $a$), we have a surjective homomorphism between finite groups, and thus an isomorphism.
 \end{proof}
 
