@@ -1,5 +1,6 @@
 \documentclass[onesided]{ccg-pset}
 
+\usepackage[normalem]{ulem}
 \course{Math 6140}
 \psnum{12}
 \author{Colton Grainger}
@@ -7,9 +8,9 @@
 
 \DeclareMathOperator{\ord}{ord}
 \newcommand{\Fp}{\mathbb{F}_p} % finite fields
-\newcommand{\Fpn}{\mathbb{F}_{p^n}} % finite fields
 \newcommand{\Fq}{\mathbb{F}_q} % finite fields
-\newcommand{\Fqn}{\mathbb{F}_{q^n}} % finite fields
+\renewcommand{\Stab}[2]{\mathrm{Stab}_{#1}\paren{#2}}
+\newcommand{\Fix}[2]{\mathrm{Fix}_{#1}\paren{#2}}
 
 \begin{document}
 \maketitle
@@ -36,6 +37,7 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
         \Gal\paren{ \Q\paren{ \zeta, \sqrt[p]{ 2 } } / \Q }  \cong C_p \rtimes_\psi C_{p-1}
     \]
     where $\zeta$ is a primitive $p$th root of unity, $\sqrt[p]{ 2 }$ is the real $p$th root of $2$, and $\psi \colon C_{p-1} \xrightarrow{\cong} \Aut C_p$ is an isomorphism from $C_{p-1}$ to the $p-1$ automorphisms of $C_p$.
+
 \begin{proof}
     Because $\chr\Q =0$, the polynomial $x^p -2$ is separable, with roots
     \begin{equation*}
@@ -45,12 +47,11 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
     Hence the extension $F = \Q\paren{ \zeta, \sqrt[p]{ 2 } } / \Q$ is the splitting field of a separable polynomial, and so $F$ is Galois. 
     To see that $[F:\Q] = (p-1)p$, note $p$ and $p-1$ are coprime, and recall the (partial) Hasse diagram:
     \[
-        \xymatrix{
-            & \Q(\sqrt[p]{ 2 }, \zeta) \ar@{-}[dl]_{p-1} \ar@{-}[dr]^p  &\\
+        \xymatrix@=0.75em{
+            & \Q(\sqrt[p]{ 2 }, \zeta) = F \ar@{-}[dl]^{p-1} \ar@{-}[dr]_p  &\\
         \Q(\sqrt[p]{ 2 }) \ar@{-}[dr]_p & & \Q(\zeta) \ar@{-}[dl]^{p-1}\\
                                         & \Q &}
     \]
-
     Now, the Galois group is determined by its action on the (fixed) generators $\sqrt[p]{ 2 }, \zeta$, which gives the possibilities
     \begin{align}
         \label{automs}
@@ -59,8 +60,8 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
     \end{align}
     By order considerations, the degree of $F/\Q$ is $p(p-1)$, so the automorphisms in~\eqref{automs} form a complete list.
 
-    Choose an integer $m$ such that $1 < m \le p-1$ and $\bar m$ generates $\paren{\Z/p\Z}^\times$. 
-    Then define $\sigma, \tau \in \Gal(F/\Q)$ by
+    Choose an integer $m$ such that $1 < m \le p-1$ and $\bar m$ generates $\Fp^\times$. 
+Let $m^{-1}$ be the representative $1 < m^{-1} \le p-1$ such that $\bar m \bar {m^{-1}} = \bar 1$ in $\Fp$. Now choose $\sigma, \tau \in \Gal(F/\Q)$ such that
     \[
         \sigma = \begin{cases}
             \zeta \mapsto \zeta^{m}\\
@@ -72,13 +73,45 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
             \sqrt[p]{ 2 } \mapsto \zeta\sqrt[p]{ 2 }
         \end{cases}
     .\]
-    Because $p$ is prime and $\ord\zeta = p$, it follows that $\ord \tau =p$. Because $\bar m$ generates the Galois group $\paren{\Z/p\Z}^\times \cong \Gal{\Q(\xi_p)/\Q}$, it follows that $\ord \sigma = p-1 = \abs{ \paren{\Z/p\Z}^\times }$.
+    \begin{claim*}[]
+        The automorphisms $\sigma$ and $\tau$ generate the Galois group $\Gal(F / \Q) \cong C_p \rtimes_\psi C_{p-1}$.
+    \end{claim*} 
 
-    Moreover, $p$ is the smallest prime dividing the order of $\Gal(F/\Q)$, so $[\ang{\tau}:\Gal{F/\Q}] = p$ implies $\ang{\tau}$ is normal in $\Gal(F/\Q)$. By order considerations, as a set, $\Gal( F/\Q ) = \ang{\tau} \times \ang{\sigma} = C_{p} \times C_{p-1}$. The group structure $\Gal(F / \Q) \cong C_p \rtimes_\psi C_{p-1}$ follows from the isomorphism $\psi \colon \ang{ \sigma } \to \ang{ \tau }$ defined by
-    \[
-        \psi(\sigma).\tau = \sigma^{-1}\tau\sigma
-    .\]
- \end{proof}
+    First off, because $p$ is prime and $\ord\zeta = p$, it follows that $\ord \tau =p$. Because $\bar m$ generates the Galois group $\Fp^\times \cong \Gal{\Q(\xi_p)/\Q}$, it follows that $\ord \sigma = p-1 = \abs{ \Fp^\times }$. By order considerations, Sylow's theorem implies that $\ang{\tau}$ is the unique Sylow $p$-subgroup, hence normal in $\Gal(F / \Q) \cong C_p \rtimes_\psi C_{p-1}$. The structure of the semidirect product follows from the isomorphism $\psi \colon \ang{ \sigma } \to \ang{ \tau }$ defined by
+    \begin{equation}
+        \label{relations}
+        \psi(\sigma).\tau = \sigma^{-1}\tau\sigma = \tau^{m^{-1}}.
+    \end{equation}
+    To verify the relations \eqref{relations} given above, follow the action of $\sigma$ and $\tau$ on the \term{field generators} $\zeta$ and $\sqrt[p]{2}$:
+    \begin{gather*}
+            \sigma^{-1}\tau\sigma \colon
+            %
+            \mqty{\zeta & \mapsto & \zeta^m\\
+                \sqrt[p]{2} & \mapsto & \sqrt[p]{2}\\
+                \zeta^{m^{-1}} & \mapsto & \zeta}\quad
+            %
+            \mqty{\mapsto & \zeta^m\\
+                  \mapsto & \zeta^{m^{-1}}\sqrt[p]{2} \\
+                  \mapsto & \zeta}\quad
+            %
+            \mqty{\mapsto & \zeta\\
+                  \mapsto & \zeta^{m^{-1}}\sqrt[p]{2} \\
+                  \mapsto & \zeta^{m^{-1}}}
+            %
+                  \qand
+            %
+            \tau^{m^{-1}} \colon 
+            %
+            \mqty{\zeta & \mapsto & \zeta\\
+                \sqrt[p]{2} & \mapsto & \zeta^{m^{-1}}\sqrt[p]{2}\\
+                \zeta^{m^{-1}} & \mapsto & \zeta^{m^{-1}}}
+    \end{gather*}
+    from which we deduce that $\Gal( F/\Q )$ has the presentation 
+    \begin{equation}
+        \label{analogousrelations}
+        \ang{\sigma, \tau : \sigma^{p-1} = \tau^p = \id, \, \sigma^{-1}\tau\sigma = \tau^{m^{-1}}}.
+    \end{equation}
+\end{proof}
 
 \item \label{14.2.5} 14.2.5. 
     The Galois group $\Gal(F/\Q)$ of $x^p-2$ (as in problem~\ref{14.2.4}) is isomorphic to the matrix group
@@ -87,95 +120,194 @@ The minimal polynomial over $\Q$ for the element $\sqrt[]{ 2 } + \sqrt[]{ 5 }$ i
 .\]
 
 \begin{proof}
-    Fix $a$, a generator of the group of units $\Fp^\times$, and define a group homomorphism $f\colon \Gal(F/\Q) \to H$ by
+    Fix a generator $a$ of $\Fp^\times$, and define a group homomorphism $f\colon \Gal(F/\Q) \to H$ by
     \[
         \sigma \underset{f}{\mapsto} \mqty[ a & 0\\ 0 & 1 ] \qand
         \tau \underset{f}{\mapsto} \mqty[ 1 & 1\\ 0 & 1 ]
     .\]
-    To see that $f$  is a homomorphism, note that $f$ is defined on generators $\sigma$ and $\tau$ of $\Gal(F/\Q)$. Moreover, the image of $\sigma$ and $\tau$ under $f$ satisfy the same relations as in $\Gal{F/\Q}$.
+    \begin{claim*}[]
+        As defined, $f$ is an isomorphism of groups.
+    \end{claim*} 
+    Observe $f$ is a bijection of finite sets. Moreover, $f$ is defined on generators $\sigma$ and $\tau$ of $\Gal(F/\Q)$. Lastly, the images of $\sigma$ and $\tau$ under $f$ are generators of $H$ that satisfy relations analogous to \eqref{analogousrelations}:
     \begin{align*}
-        \mqty[ a & 0\\ 0 & 1 ]\mqty[ 1 & 1\\ 0 & 1 ] &= \mqty[ a & a\\ 0 & 1 ] &
-        \mqty[ 1 & 1\\ 0 & 1 ]\mqty[ a & 0\\ 0 & 1 ] &= \mqty[ a & 1\\ 0 & 1 ]\\
-        \mqty[ 1 & 1\\ 0 & 1 ]^p &= \mqty[ 1 & 0\\ 0 & 1 ] &
-        \mqty[ a & 0\\ 0 & 1 ]^{p-1} &= \mqty[ 1 & 0\\ 0 & 1 ]
+        \mqty[ 1 & 1\\ 0 & 1 ]^p &= \mqty[ 1 & 0\\ 0 & 1 ],
+                 & \mqty[ a & 0\\ 0 & 1 ]^{p-1} &= \mqty[ 1 & 0\\ 0 & 1 ],
+                 & \mqty[ a^{-1} & 0\\ 0 & 1 ]\mqty[ 1 & 1\\ 0 & 1 ]\mqty[ a & 0\\ 0 & 1 ] &= \mqty[ 1 & a^{-1} \\0 & 1 ].
     \end{align*}
-    Because $H$ has order $p(p-1)$ and $f$ is surjective (by choice of generator $a$), we have a surjective homomorphism between finite groups, and thus an isomorphism.
+    Because $\Gal(F/\Q)$ and $H$ have isomorphic presentations, they are isomorphic as groups.
 \end{proof}
-
 
 \item \label{14.2.8} 14.2.8. 
 Suppose $K$ is a Galois extension of $F$ of degree $p^n$ for some prime $p$ and some $n \ge 1$. 
 There are Galois extensions of $F$ contained in $K$ of degrees $p$ and $p^{n-1}$.
 
+\begin{proof}
+    Let $P_n = \Gal(K/F)$, as the Galois group of $K$ over $F$ is a $p$-group with $\abs{\Gal{K/F}} = [K/F] = p^n$.
+
+
+    For the extension of degree $p^{n-1}$, apply Cauchy's theorem. 
+    That $p$ divides $\abs{P_n}$ guarantees there's an automorphism $\sigma \in P_n$ of order $p$. 
+    Because the center of a nontrivial finite $p$-group contains more than $1$ element, it follows that $\ang{\sigma} \le Z(P_n)$, and therefore $\ang{\sigma} \triangleleft P_n$. 
+    Since $K$ is Galois over $F$ and $\ang{\sigma}$ is normal in $P_n$, the fixed field $\Fix K { \ang{\sigma} }$ has relative dimension $p^{n-1} = [K:F]/\abs{\sigma}$ over $F$. 
+
+    For the extension of degree $p$, apply the first Sylow theorem (we could have used this for $p^{n-1}$ as well).
+
+    \begin{thm*}[Slyow's existence theorem]
+        Let $G$ be a group of order $p^n m$, with $n \ge 1$, $p$ prime, and $(p,m) = 1$. Then $G$ contains a subgroup of order $p^i$ for each $1 \le i \le n$ and every subgroup of $G$ of order $p^i$, $i \lneqq n$, is normal in some subgroup of order $p^{i+1}$.
+    \end{thm*}
+   
+    In particular, there's a subgroup $P_{n-1} \triangleleft P_n$ of index $[P_{n-1}: P_n] = p$. So, as $K$ is Galois over $F$, the fixed field $\Stab K {P_{n-1}}$ has relative dimension $p = [K:F]/\abs{P_{n-1}}$ over $K$.
+\end{proof}
 
 
 \item \label{14.2.11} 14.2.11.
 Suppose $f(x) \in \Z[x]$ is an irreducible quartic whose splitting field has Galois group $S_4$ over $\Q$. 
-Let $\theta$ be a root of $f(x)$ and set $K = \Q(\theta)$. 
-Then $K$ is an extension of $Q$ of degree $4$ which has no proper subfields.
-We determine if there are any Galois extensions of $\Q$ of degree $4$ with no proper subfields.
+Let $\theta$ be a root of $f(x)$ and set $E = \Q(\theta)$. 
+Then $E$ is an extension of $Q$ of degree $4$ which has no proper subfields.
 
+\begin{proof}
+    An irreducible quartic $f(x) \in \Z[x]$, by the contrapositive to Gauss' lemma, is irreducible over $\Q$. 
+    For $\theta$ a root of $f$, since $f$ is irreducible of degree $4$, the extension $E = \Q(\theta)$ has degree $4$ over $\Q$. 
+    Now say $K$ is the splitting field of $f(x)$ over $\Q$, and assume $\Gal(K/\Q) = S_4$.
+    For \emph{contradiction}, let $M$ be a proper subfield $E \gneqq M \gneqq F$. By inspecting \ref{towerdeg2}, divisibility forces $[M:F] = 2$. 
+    \begin{equation}
+        \label{towerdeg2}
+        \xymatrix@=1.3em{
+            K \ar@{-}[d]_{6} \ar@{~>}[rr]                   &                              & 1   & \\
+            E \ar@{-}[dd]_{4} \ar@{-}[dr]_{2} \ar@{~>}[rr]  &                              & S_3   & \\
+                                                            & M \ar@{-}[dl]_2 \ar@{~>}[rr] &     & A_4 \\
+            F \ar@{~>}[rr]                                  &                              & S_4 & 
+        }
+    \end{equation}
+    Then that $K$ is Galois over $F$, that $\Stab{\Gal(K/F)}{F} = S_4$, and that $[M:F] = 2$, imply $\Stab{\Gal(K/F)}{M}= A_4$. As well, that $[E:F] = 4$ implies $\Stab{\Gal(K/F)}E = S_3$ ($\inj S_4$). Then $F \subset M \subset E$ implies $S_3 \le A_4 \le S_4$---which is absurd! For $A_4$ cannot contain the $2$-cycles in $S_3$.
+\end{proof}
+
+\begin{claim*}[]
+    Any Galois extensions of $\Q$ of degree $4$ has no proper subfields.
+\end{claim*}
+
+\begin{proof}
+    Let $K/\Q$ be a degree $4$ extension of $\Q$. If $K/\Q$ is Galois, then $\Gal(K/\Q)$ is group of order $4$, so either the \emph{Viergruppe} $V_4$ or the cyclic group $C_4$. In either case, both $V_4$ and $C_4$ are abelian and contain some subgroup of index~$2$. Let $H$ be such a subgroup. Then the fixed field $\Fix K H$ has relative dimension $2$ over $\Q$. Therefore $K$ contains a proper subfield.
+\end{proof}
 
 
 \item \label{14.2.13} 14.2.13.
 If the Galois group of the splitting field of a cubic over $\Q$ is the cyclic group of order $3$, then all the roots of the cubic are real.
 
+\newcommand{\gal}{\Gal(K/\Q)} 
+
+\begin{proof}
+Let $K$ be the splitting field of a cubic polynomial $f(x) \in \Q[x]$, and suppose $\gal = C_3$. So, trivially, $K$ is Galois over $\Q$ because $K$ is the splitting field of the separable polynomial $f$. 
+(Note $\Q$ is perfect.)
+In turn, $f$ is irreducible because its splitting field $K$ over $\Q$ has degree $3 \gneqq 2!$. 
+(If $f$ had a root $\theta$ in $\Q$, then $K$ would be the splitting field of the quadratic $f(x)/(x-\theta)$, whence the degree of $K$ over $\Q$ would be at most $2!$.)
+
+Because $f$ is an irreducible cubic over $\Q$ and $\R$ is Cauchy complete, the intermediate value theorem guarantees that there exists some $\alpha$ in $\R \setminus \Q$ such that $f(\alpha) = 0$.
+Consider adjoining $\alpha$ to $\Q$. 
+Since $K$ is Galois over $\Q$, 
+\begin{equation*}
+    3 = [\Q(\alpha):\Q] = \abs{ \Stab {\gal} {\Q(\alpha)} :\Stab {\gal}{\Q} } = \abs{ \Stab {\gal} {\Q(\alpha)}: C_3}.
+\end{equation*}
+By order considerations, $\Stab {\gal} {\Q(\alpha)} = \{1\}$ is the trivial subgroup of $\gal$. 
+Equivalently, in terms of fixed fields, $\Fix {K}{\set{1} } = \Q(\alpha)$. 
+But $\Fix K { \set{1} } = K$, so $K = \Q(\alpha)$. 
+Lastly, $\Q(\alpha) \subset \R$, we conclude that the splitting field $K \subset \R$. 
+We have shown all the roots of $f$ lie in $\R$.
+\end{proof}
+
 \item \label{14.3.1} 14.3.1.
-The factors of $x^8 - x$ as irreducibles in $\Z[x]$ and $\F_2[x]$, respectively, are:
+The factors of $x^8 - x$ over $\Z$ and over $\F_2$ are respectively $x(x-1)\Phi_7(x)$ and $x(x+1)(x^3 + x + 1)(x^3 + x^2 + 1)$.
+
+\begin{proof}
+    Consider the factors $x$, $(x-1)$, $\Phi_7(x)$ over $\Z$. 
+    \begin{itemize}
+        \item Both $x$ and $x-1$ are linear, hence irreducible.
+        \item The $7$th cyclotomic polynomial $\Phi_7(x)$ is irreducible because $\Phi_7(x+1)$ is Eisenstein at the prime $7$.
+    \end{itemize}
+
+    Consider the factors $x$, $(x+1)$, $(x^3 + x + 1)$, $(x^3 + x^2 + 1)$ over $\F_2$.
+    \begin{itemize}
+        \item Both $x$ and $x+1$ are linear, hence irreducible.
+        \item Observe that $x^{2^{3}}-x = x^8 - x$.
+        \item Appealing to proposition 18, the irreducible cubics over $\F_2$ are the divisors of $\frac{x^{2^{3}} -x}{x(x-1)}$:
+        \begin{enumerate}
+            \item \(x^3 + 1\) reduces, as \(\overline{ -1 }\) is a root;
+            \item \(x^3 +x^2 + 1\) is irreducible;
+            \item \(x^3 + x + 1\) is irreducible;
+            \item \(x^3 + x^2 + x + 1\) reduces, as \(\overline{ -1 }\) is a root.
+        \end{enumerate}
+    \end{itemize}
+\end{proof}
 
 
 \item \label{14.3.3} 14.3.3.
 An algebraically closed field is infinite.
 
+\begin{proof}
+    We argue the contrapositive.\footnote{This proof closely follows theorems stated in Hungerford, 1980.} Suppose $F$ is a finite field. Then $\abs{F} = p^r$ for some $r \ge 1$ and prime $p$. We'll argue that, for all $n > 1$, the roots of the polynomial $x^{p^{rn}} - x$ are not contained in $F$---so then $F$ cannot be algebraically closed. To obtain such a polynomial, we prove the following.
 
-\item \label{14.3.7} 14.3.7.
-\begin{enumerate}
+\begin{claim*}
+    If $F$ is a finite field and $n \ge 1$ is an integer, there's a simple extension field $K = F(u)$ such that $[K:F]=n$. 
+\end{claim*}
+
+     Let $K$ be the splitting field of $x^{p^{n}} - x$ over $F$. We know that $F$ is also the splitting field of $x^{p^{n}} -x$ over $\Fp$. Thus each $u \in F$ satisfies $u^{p^n} - u = 0$, and so, by induction, also satisfies $u^{p^{rn}} = u$. 
+
+    We assume: \textit{If $E$ is an intermediate field of the extension $K/F$ of the form $E = F(u_1, \ldots, u_k)$, where the $u_i$ are roots of some $f \in F[x]$, then $K$ is the splitting field of $f$ over $F$ if and only if $K$ is the splitting field of $f$ over $E$.} 
+
+    Since $K$ is of the form $\Fp(u_1, \ldots, u_{p^n})$ with the $u_\ell$ all roots of $x^{p^{rn}}-x$, we conclude $K$ is also the splitting field of $x^{p^{rn}} -x$ over $\Fp$. Therefore $K$ contains the $p^{rn}$ roots of $x^{p^{rn}}-x$. Then
+    \begin{equation*}
+        p^{rn} = \abs{K} = \abs{F}^{[K:F]} = p^{r[K:F]} \qq{and so} [K:F] = n.
+    \end{equation*}
+\end{proof}
+
+    \item \label{14.3.7} \sout{ 14.3.7. }
+        \begin{enumerate}
     \item One of $2$, $3$, or $6$ is a square in $\Fp$ for every prime $p$.
-    \item Therefore, for every prime $p$, the polynomial 
+        \item Therefore, for every prime $p$, the polynomial 
         \begin{equation}
-            \label{allprimes}
-        x^6 - 11x^{4} + 36x^{2} - 36 = \paren{x^{2} -2} \paren{x^{2} -3} \paren{x^{2} -6} 
-        \end{equation}
-        has a root modulo $p$.
-    \item However, the polynomial~\eqref{allprimes} is irreducible over $\Z$.
-\end{enumerate}
+    \label{allprimes}
+    x^6 - 11x^{4} + 36x^{2} - 36 = \paren{x^{2} -2} \paren{x^{2} -3} \paren{x^{2} -6} 
+    \end{equation}
+    has a root modulo $p$.
+        \item However, the polynomial~\eqref{allprimes} is irreducible over $\Z$.
+        \end{enumerate}
 
 
-\item \label{14.3.8} 14.3.8. We exhibit an \term{Artin--Schreier extension}.
-\begin{enumerate}
+    \item \label{14.3.8} \sout{ 14.3.8. } We exhibit an \term{Artin--Schreier extension}.
+        \begin{enumerate}
     \item The splitting field $E$ of the polynomial $x^p - x -a$ over $\Fp$, where $a \neq 0$ and $a \in \Fp$, is:
-    \item For a root $\alpha$ of $x^p - x -a$, the map $\alpha \mapsto \alpha + 1$ induces an automorphism of $E$ fixing $\Fp$.
-    \item Therefore, the Galois group of $x^p - x -a$ over $\Fp$ is cyclic.
-\end{enumerate}
- 
-\item \label{14.3.9} 14.3.9.
-Let $q = p^m$ be a power of the prime $p$ and let $\Fq = \F_{p^m}$ be the finite field with $q$ elements. Then let $\sigma_q = \sigma_p^m$ be the $m$th power of the Froebenius automorphism $\sigma_p$, called the \term{$q$-Froebenius automorphism}.
+        \item For a root $\alpha$ of $x^p - x -a$, the map $\alpha \mapsto \alpha + 1$ induces an automorphism of $E$ fixing $\Fp$.
+        \item Therefore, the Galois group of $x^p - x -a$ over $\Fp$ is cyclic.
+        \end{enumerate}
 
-\begin{enumerate}
+    \item \label{14.3.9} \sout{ 14.3.9. }
+        Let $q = p^m$ be a power of the prime $p$ and let $\Fq = \F_{p^m}$ be the finite field with $q$ elements. Then let $\sigma_q = \sigma_p^m$ be the $m$th power of the Froebenius automorphism $\sigma_p$, called the \term{$q$-Froebenius automorphism}.
+
+        \begin{enumerate}
     \item The $q$-Froebenius automorphism $\sigma_q$ fixes $\Fq$.
-    \item Every finite extension of $\Fq$ of degree $n$ is the splitting field $K$ of $x^{q^n} -x$ over $\Fq$, hence unique.
-    \item For $K/\Fq$ the unique degree $n$ extension of $\Fq$, we have 
-    \[
+        \item Every finite extension of $\Fq$ of degree $n$ is the splitting field $K$ of $x^{q^n} -x$ over $\Fq$, hence unique.
+        \item For $K/\Fq$ the unique degree $n$ extension of $\Fq$, we have 
+        \[
         \Gal(K/\Fq) = \ang{\sigma_q}
     .\]
-    \item Hence, there's a bijective correspondence
-    \[
+        \item Hence, there's a bijective correspondence
+        \[
         \set{\mqty{\text{subfields $E$}\\
-                    K \ge E \ge F}} 
-            \leftrightsquigarrow 
+            K \ge E \ge F}} 
+    \leftrightsquigarrow 
         \set{\mqty{\text{divisors $d$}\\
-                   1 \mid d \mid n}}
+            1 \mid d \mid n}}
     .\]
-\end{enumerate}
- 
-\item \label{14.3.10} 14.3.10.
-Let $\phi$ be the Euler totient function, $p$ a prime, and $n$ a natural number. Then
-\[
-    n \qq{divides} \phi(p^n -1)
-.\]
-\begin{proof}
+        \end{enumerate}
+
+    \item \label{14.3.10} \sout{ 14.3.10. }
+        Let $\phi$ be the Euler totient function, $p$ a prime, and $n$ a natural number. Then
+        \[
+        n \qq{divides} \phi(p^n -1)
+            .\]
+            \begin{proof}
     Observe that $\phi(p^n -1)$ is the order of the group of automorphisms of a cyclic group of order $p^n -1$.
-\end{proof}
+        \end{proof}
 
 \end{enumerate}
 
