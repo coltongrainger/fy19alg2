@@ -1,0 +1,122 @@
+\begin{note}[Common mistakes on HW 12]
+    Notably, folks forgot how to manipulate the subgroups 
+    \begin{itemize}
+        \item $A_4$ in $S_4$, and
+        \item $Z(P)$ in a $p$-group $P$ of order $p^n$.
+    \end{itemize}
+    Our main trouble with $p$-groups was in showing that there exists a normal subgroup of index $p^{n-1}$. 
+    For example, given a $p$-group, I mistook a subgroup of the center to be normal in the group. 
+    (Finding a normal subgroup of index $p$ was less difficult. Recall that it's impossible for a proper subgroup of a nilpotent group to be self-normalizing. Hence, any maximal subgroup in a nilpotent group is normal.)
+\end{note}
+
+\begin{todo}[]
+    Show that there are involutions of the dihedral group $D_{2n}$ that are non-central for all $n \ge 0$. Show also that there are maximal subgroups in $D_{2n}$ which are not conjugate.
+\end{todo}
+
+\begin{todo}[]
+    \begin{enumerate}
+        \item Argue for contradiction. Say that $N$ is a normal subgroup of $S_4$ of index $2$ that's not $A_4$. Then produce absurdity from 
+              \begin{equation*}
+                 \frac{A_4 N}{N} \cong \frac{A_4}{A_4 \cap N}.
+              \end{equation*}
+        \item Do the same for $S_5 \ge A_5$.
+        \item Say that $H \le S_4$ and $H$ has order $6$. 
+         Let $S_4$ act on the left cosets of $H$ by left multiplication.
+        Apply orbit-stabilizer to determine that $H \cong S_3$.\footnote{Consider the orbit of, e.g., $4 \in S_4$. Then $\mathrm{Orb} (4) \cdot \Stab_{S_4} (H)$. Since $S_4$ has only inner automorphisms, we have that $S_3 \cong H$. }
+    \end{enumerate}
+\end{todo}
+
+\begin{todo}[$2$, $3$ or $6$ is a square in $\Fp^\times$]
+    Let $h \in \Fp^\times$ be a nonzero element in the group of units.
+    Then $h = g^a$ for some even $a$ (why?) and a generator $g$ of $\Fp^\times$.
+    \TODO\ How does $g^b g^a$ with $b$ odd lead to the conclusion that at least one of $2$, $3$ or $6$ is a square?
+
+    Another approach relies on the Legendre symbol:
+    \begin{equation*}
+        \paren{\frac{2}{p}}\paren{\frac{3}{p}}  = \paren{\frac{6}{p}}.
+    \end{equation*}
+\end{todo}
+
+% fakesection
+
+\newcommand{\gal}{\Gal(\Q(\zeta_n)/\Q)} 
+
+\begin{ex}[Automorphisms of $\Q(\zeta_n)$ over $\Q$]
+    Let $\zeta_n$ be a primitive $n$th root of unity. 
+    Suppose $n= \prod_i p_i^{a_i}$ is the prime factorization of $n$. 
+    Then by the Chinese remainder theorem,
+    \begin{equation*}
+        \gal \cong \paren{\Z/n\Z}^\times \cong \prod_i \paren{\Z/{p_i^{a_i}}\Z}^\times.
+    \end{equation*}
+    Because the Sylow $p$-subgroups of the multiplicative group $\ang{\zeta_n} \cong C_n$ are characteristic, the splitting in this direct product respects the Galois groups. 
+    That is, 
+    \begin{equation*}\paren{\Z/{p_i^{a_i}}\Z}^\times \cong \Gal(\Q({p_i^{a_i}})/\Q)\end{equation*} 
+    for each $i$ in the index set of prime factors of $n$.
+\end{ex}
+
+\begin{defn}[Abelian extensions]
+    An \term{abelian field extension} $K/F$ has an abelian Galois group.
+\end{defn}
+
+Suppose $G \in \Grp$ is given.
+We'd like to find an extension $K/F$ with Galois group $G$. 
+
+\begin{itemize}
+    \item In the case that $G$ is non-abelian, we're forced to work with $K/\Q$ (since the extensions over a finite field will have Galois groups that are the direct product of cyclic groups).
+    \item In the case that $G$ is abelian, $\Fp$ and $\Fq$ (and so on) can be extended to $\F_{p^n}$ and $\F_{q^m}$ (and so on) to produce an abelian group $A$ with $G$ as a quotient. \TODO\ (Seems wrong.)
+\end{itemize}
+
+\begin{ex}[Finite abelian extensions]
+    Let's work with $\Q(\zeta_n) \ge K \ge \Q$. 
+    We'll produce a quotient of $\prod_i^k \paren{\Z/{p_i^{a_i}}\Z}^\times$ that's isomorphic to $G$. It's possible to do so with each power $a_i = 1$ in every factor $\paren{\Z/{p_i^{a_i}}\Z}^\times$ (these factors then having order $p_i - 1$).
+
+    Let $A \in \Ab$ be finite. We'll classify the quotients of $A$ by classifying the subgroups. The primary decomposition is 
+    \begin{equation*}
+       A \cong \Z_{q_1^{b_1}} \oplus \cdots \oplus \Z_{q_\ell^{b_\ell}}.
+    \end{equation*}
+    We may take $\ell = k$ (so $G$ and $A$ have the same number of primes in their primary decompositions).
+    One might \emph{feel like} applying the Chinese remainder theorem, but we need a stronger result.
+
+\begin{thm}[Dirichlet's theorem on arithmetic progressions]
+    For any two positive coprime integers $r$ and $m$, there are infinitely many primes in the arithmetic progression $r + m\Z$.
+\end{thm}
+
+    Namely, for each primary factor ${q_i^{b_i}}$, there are an infinitude of primes $p_i$ such that
+    \begin{equation*}
+        p_i \equiv 1 \pmod{q_i^{b_i}}
+    \end{equation*}
+
+    Now, to realize $\Z_{q_i^{b_i}}$ as a quotient of $\paren{\Z/p_i\Z}^\times$, we need to find $p_i$ such that $q_i^{b_i}$ divides $p_i -1$. To obtain the entire group $G$ as a quotient of $\paren{\Z/n\Z}^\times$, this amounts to solving the congruences 
+    \begin{align*}
+       p_i \equiv 1 \pmod{q_i^{b_i}} \qq{for all $i = 1, \ldots, k$.}
+    \end{align*}
+    By Dirichlet, a solution is possible (with no ``overlapping''). So take $n$ to have such a prime factorization $p_1 \cdots p_k$. We've found a quotient of $\paren{\Z/n\Z}^\times$ that's isomorphic to $G$, hence (pulling back the kernel) a subgroup $A \le  \paren{\Z/n\Z}^\times$.
+\end{ex}
+
+\begin{ex}[Construction of $n$-gons]
+   We're able to construct a primitive $n$th root of unity $\zeta_n$ if we can construct the real and imaginary parts. (Constructing an $n$-gon is equivalent to this.) 
+
+   Let's try to construct $\zeta + \zeta^{-1} = a$. Then $\zeta^2 - a \zeta + 1 = 0$. Once we have the real part of $\zeta_n$, we're able to find the imaginary part with one more quadratic extension. We need $\phi(n)$ to be a power of $2$.
+    \begin{equation*}
+        \xymatrix{
+        \Q(\zeta) \ar@{-}@/_4pc/[dd]_{2^l} \ar@{-}[d]^2\\
+        \Q(\zeta + \zeta^{-1}) \ar@{-}[d]^{2^k}\\ 
+        \Q
+        }
+    \end{equation*}
+    That is, breaking the totient function apart multiplicatively, if
+    \begin{equation*}
+        n = \prod_i^k p_i^{a_i} \qq{then} \phi(n) = \prod_i^k \paren{p_i^{a_i} - p_i^{a_i-1}}.
+    \end{equation*}
+    So for each $i$, we ought to have $\phi(p_i^{a_i})$ a power of $2$. Either $p_i = 2$ or $a_i = 1$. In the later case, $p_i$ is a Fermat prime.
+\end{ex}
+
+\begin{ex}[Finding the generators for $\paren{\Z/13\Z}^\times$]
+    Conner has the idea to take a primitive root $\zeta_{13}$ and let the generator for $\Gal(\Q(\zeta_{13})/\Q)$ be the squaring map $\sigma$. Then $\sigma$ has order $12$, since $64 \pmod{13} \equiv -1$, and likewise one may show that $\sigma$ does not have order $2$, $3$, $4$.
+\end{ex}
+
+\begin{note}[]
+    The group of units $\paren{\Z/n\Z}^\times$ is \emph{easy to understand}, but its automorphism group \emph{is not}. Two general tips:The automorphisms are acting exponentially.
+\end{note}
+
+
